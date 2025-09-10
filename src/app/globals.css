@@ -1,26 +1,199 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
+  font-size: 10px;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f1f1f;
+  /* 공통 컬러  */
+  --color-primary: #a78bfa;
+  --color-outline-btn: #e7c6c2;
+  --color-point: #e57373;
+  --color-point-secondary: #d1e4d1;
+  --color-fill-btn-txt: #ffffff;
+  --color-footer-txt: #000000;
+  --color-footer-background: #fafafa;
+  --color-footer-top-line: #dcdcdc;
+  --color-header-background: rgba(209, 228, 209, 0.7);
+  --color-skill-chip: #f8faf9;
+  --color-key-features-chip: #fdf8f8;
+  /* 라이트 모드 */
+  --color-txt-secondary: #111827;
+  --color-txt-tertiary: #4a4a4a;
+  --color-txt-tertiary-50: #4a4a4a99;
+  --color-txt-quaternary: #6d6d6d;
+  --color-txt-point: #1e1e1e;
+  --color-contact-title: #5f5f5f;
+  --color-header-txt-point: #4b4b4b;
+  --color-header-txt: #6d6d6d80;
+  --color-works-background: #fafafa;
+  /* 쉐도우 */
+  --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
+  --shadow-icon-chip: 3px 4px 15px -3px rgba(77, 77, 77, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 다크모드 컬러 */
+    --background: #000000;
+    --foreground: #ffffff;
+    --color-txt-secondary: #ffffff;
+    --color-txt-tertiary: rgba(255, 255, 255, 0.7);
+    --color-txt-tertiary-50: rgba(255, 255, 255, 0.5);
+    --color-txt-quaternary: #6d6d6d;
+    --color-txt-point: #ffffff;
+    --color-contact-title: rgba(255, 255, 255, 0.75);
+    --color-header-txt-point: #ffffff;
+    --color-header-txt: rgba(255, 255, 255, 0.5);
+    --color-works-background: rgba(255, 255, 255, 0.05);
+    /* 쉐도우 */
+    --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
+    --shadow-icon-chip: 3px 4px 15px -3px rgba(255, 255, 255, 0.25);
+  }
+}
+[data-theme='dark'] {
+  /* 다크모드 컬러 */
+
+  --background: #000000;
+  --foreground: #ffffff;
+  --color-txt-secondary: #ffffff;
+  --color-txt-tertiary: rgba(255, 255, 255, 0.7);
+  --color-txt-tertiary-50: rgba(255, 255, 255, 0.5);
+  --color-txt-quaternary: #6d6d6d;
+  --color-txt-point: #ffffff;
+  --color-contact-title: rgba(255, 255, 255, 0.75);
+  --color-header-txt-point: #ffffff;
+  --color-header-txt: rgba(255, 255, 255, 0.5);
+  --color-works-background: rgba(255, 255, 255, 0.05);
+  /* 쉐도우 */
+  --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
+  --shadow-icon-chip: 3px 4px 15px -3px rgba(255, 255, 255, 0.25);
+}
+
+[data-theme='light'] {
+  --background: #ffffff;
+  --foreground: #1f1f1f;
+  --color-primary: #a78bfa;
+  --color-txt-secondary: #111827;
+  --color-txt-tertiary: #4a4a4a;
+  --color-txt-tertiary-50: #4a4a4a99;
+  --color-txt-quaternary: #6d6d6d;
+  --color-txt-point: #1e1e1e;
+  --color-contact-title: #5f5f5f;
+  --color-fill-btn-txt: #ffffff;
+  --color-outline-btn: #e7c6c2;
+  --color-point: #e57373;
+  --color-point-secondary: #d1e4d1;
+  --color-footer-txt: #000000;
+  --color-footer-background: #fafafa;
+  --color-footer-top-line: #dcdcdc;
+  --color-header-background: rgba(209, 228, 209, 0.7);
+  --color-header-txt-point: #4b4b4b;
+  --color-works-background: #fafafa;
+
+  --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
+  --shadow-icon-chip: 3px 4px 15px -3px rgba(77, 77, 77, 0.25);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* 컬러 지정 */
+  --color-primary: var(--color-primary);
+  --color-txt-secondary: var(--color-txt-secondary);
+  --color-txt-tertiary: var(--color-txt-tertiary);
+  --color-txt-tertiary-50: var(--color-txt-tertiary-50);
+  --color-txt-quaternary: var(--color-txt-quaternary);
+  --color-txt-point: var(--color-txt-point);
+  --color-contact-title: var(--color-contact-title);
+  --color-fill-btn-txt: var(--color-fill-btn-txt);
+  --color-outline-btn: var(--color-outline-btn);
+  --color-point: var(--color-point);
+  --color-point-secondary: var(--color-point-secondary);
+  --color-skill-chip: var(--color-skill-chip);
+  --color-key-features-chip: var(--color-key-features-chip);
+  --color-footer-txt: var(--color-footer-txt);
+  --color-footer-background: var(--color-footer-background);
+  --color-footer-top-line: var(--color-footer-top-line);
+  --color-header-background: var(--color-header-background);
+  --color-header-txt-point: var(--color-header-txt-point);
+  --color-header-txt: var(--color-header-txt);
+  --color-works-background: var(--color-works-background);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* shadow 지정 */
+  --shadow-header: var(--shadow-header);
+  --shadow-icon-chip: var(--shadow-icon-chip);
+  --font-sans:
+    'Spoqa Han Sans Neo', ui-sans-serif, system-ui, -apple-system, sans-serif,
+    Roboto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    'Spoqa Han Sans Neo',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 10px;
+}
+
+@keyframes circle_ani1 {
+  0% {
+    transform: translate(0, 0) rotate(180deg);
+  }
+  33% {
+    transform: translate(100px, -200px);
+  }
+  66% {
+    transform: translate(-400px, 0px);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+.animate-circle_ani1 {
+  animation: circle_ani1 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes circle_ani2 {
+  0% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+  33% {
+    transform: translate(-200px, 500px) scale(0.5);
+  }
+  66% {
+    transform: translate(800px, -800px);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0) scale(1);
+  }
+}
+.animate-circle_ani2 {
+  animation: circle_ani2 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes circle_ani3 {
+  0% {
+    transform: translate(0, 0) skew(30deg);
+  }
+  33% {
+    transform: translate(800px, 200px) scale(0.5);
+  }
+  66% {
+    transform: translate(100px, 800px);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0) scale(1) skew(0);
+  }
+}
+.animate-circle_ani3 {
+  animation: circle_ani3 12s ease-in-out infinite;
+  will-change: transform;
 }
