@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 type Props = { type: string; text: string; moreStyling?: string };
 
 export default function WorkTagChip(props: Props) {

@@ -71,14 +71,13 @@ export default function Header() {
     };
   }, [lastScrollY]);
 
-  // 네비게이션 클릭 핸들러
+  // 네비게이션 클릭시 header 이벤트 막기
   function handleNavClick() {
     isNavigating.current = true;
     setHidden(false); // 무조건 보이게
-
     setTimeout(() => {
       isNavigating.current = false;
-    }, 1400); // 스크롤 애니메이션 끝날 시간만큼
+    }, 1500); // 스크롤 애니메이션 끝날 시간만큼
   }
 
   return (

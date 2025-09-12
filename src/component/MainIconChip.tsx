@@ -33,7 +33,7 @@ export default function MainIconChip(props: Props) {
       const dy = e.clientY - iconY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      const strength = Math.pow(Math.max(0, (1000 - distance) / 1000), 2);
+      const strength = Math.pow(Math.max(0, (500 - distance) / 500), 2);
       targetX = -dx * strength * 0.3;
       targetY = -dy * strength * 0.5;
     }

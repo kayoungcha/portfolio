@@ -37,7 +37,37 @@ export const heroIcons = [
   },
 ];
 
-export const workList = [
+export const workNavDesc = [
+  {
+    id: '앱',
+    desc: `모바일 앱은 Ionic과 Angular를 이용한 하이브리드 앱으로 \nFirebase를 통해 서버리스 백엔드를 설계 및 구현까지 직접 진행하였습니다.`,
+  },
+  {
+    id: '웹',
+    desc: `웹 작업은 각각 React, Angular, WordPress 세가지 작업 버전이 있습니다. \n React 작업은 퍼블리싱과 HTTP 프론트엔드 작업을 진행하였고 \nAngular 작업은 Firebase를 통한 서버리스 백엔드 설계 및 구현까지 진행하였습니다.`,
+  },
+  {
+    id: '퍼블리싱',
+    desc: `퍼블리셔로 시작해 퍼블리싱 작업이 많습니다. \n모든 퍼블리싱 작업은 Ionic/Angular로 작업되어있습니다.`,
+  },
+  {
+    id: '개인작업',
+    desc: `포트폴리오 및 프로젝트를 진행하며 만들었던 실험용 개인작업`,
+  },
+];
+
+export interface work {
+  type: string;
+  name: string;
+  mainImg: string;
+  desc: string;
+  year: string;
+  skill: string[];
+  keyFeatures: string[];
+  design: string[];
+}
+
+export const workList: work[] = [
   {
     type: 'web',
     name: 'Streaum',

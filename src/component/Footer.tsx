@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 import TitleText from './TitleText';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 
 export default function Footer() {
   const contactSectionRef = useRef<HTMLElement | null>(null);
+  const [show, setShow] = useState<boolean>(false);
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
@@ -20,10 +21,11 @@ export default function Footer() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection('contactSection');
+            setShow(true);
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
     observer.observe(el);
@@ -35,18 +37,24 @@ export default function Footer() {
       <section
         ref={contactSectionRef}
         id="contactSection"
-        className="relative h-[480px]"
+        className={`relative h-[480px] z-0
+          ${show ? ' translate-y-0' : 'translate-y-[100px]'}
+          transition-transform duration-800 ease-linear`}
       >
         <div
           className="w-full h-full absolute left-0 top-0 z-200 p-[40px] flex
             flex-col items-center"
         >
-          <TitleText title={'연락처'} styles="!text-contact-title mb-[40px]" />
+          <TitleText
+            title={'연락처'}
+            styles={`!text-contact-title mb-[40px] ${show ? 'animate-fade-up-ani' : ''}`}
+          />
 
           <ul
-            className="border-1 border-outline-btn bg-background
+            className={`border-1 border-outline-btn bg-background
               backdrop-blur-[40px] shadow-[6px_7px_15.4px_0_rgba(0,0,0,0.1)]
-              w-fit rounded-[20px] grid grid-rows-3 overflow-hidden mb-[40px]"
+              w-fit rounded-[20px] grid grid-rows-3 overflow-hidden mb-[40px]
+              ${show ? 'animate-fade-up-ani' : ''}`}
           >
             {[
               '이메일 주소 복사하기',
@@ -68,7 +76,10 @@ export default function Footer() {
             })}
           </ul>
 
-          <ul className="flex gap-x-[64px] items-center">
+          <ul
+            className={`flex gap-x-[64px] items-center
+              ${show ? 'animate-fade-up-ani' : ''}`}
+          >
             <li>
               <button
                 className="text-[48px] cursor-pointer scale-[0.9]
@@ -100,14 +111,14 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="relative overflow-hidden w-full h-full">
+        <div className={'relative overflow-hidden w-full h-full'}>
           <div
-            className="absolute w-full h-full bg-[rgba(255,255,255,0.5)] left-0
-              top-0 z-100 backdrop-blur-[70px]"
+            className={`absolute w-full h-full bg-[rgba(255,255,255,0.5)] left-0
+              top-0 z-100 backdrop-blur-[70px]`}
           ></div>
           <span
             className="block absolute w-[263px] h-[263px] left-[637px]
-              top-[-142px] rounded-full bg-[rgba(44,103,241,.44))]
+              top-[-142px] rounded-full bg-[rgba(44,103,241,.44)]
               animate-circle_ani1"
           ></span>
 
@@ -118,7 +129,7 @@ export default function Footer() {
           ></span>
           <span
             className="block absolute w-[488px] h-[488px] rounded-full
-              top-[200px] left-[calc(50%_-350px)] bg-[#92B1FB)]
+              top-[200px] left-[calc(50%_-350px)] bg-[#92B1FB]
               animate-circle_ani2"
           ></span>
           <span
@@ -159,8 +170,8 @@ export default function Footer() {
         </div>
       </section>
       <section
-        className="bg-footer-background w-full h-[20rem] flex items-center
-          justify-center"
+        className="relative bg-footer-background w-full h-[20rem] flex
+          items-center justify-center z-10"
       >
         <h6
           className="font-medium text-[1.6rem] text-footer-txt text-center

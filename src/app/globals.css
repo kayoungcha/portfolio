@@ -222,3 +222,44 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes fade-up-ani {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up-ani {
+  animation: fade-up-ani 0.3s linear both;
+}
+
+@keyframes chipDropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-1000px) translateX(var(--x-offset, 0px))
+      rotate(var(--rotate, 0)) skew(var(--skew, 0)) scale(0.8);
+  }
+  40% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0) skew(0) scale(1);
+  }
+}
+
+.animate-chip {
+  opacity: 0; /* 시작 상태 */
+  animation-name: chipDropIn;
+  animation-timing-function: cubic-bezier(0.3, 0.42, 0.92, 0.2);
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+}
