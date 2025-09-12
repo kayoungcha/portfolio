@@ -1,14 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useThemeStore } from '@/store/useThemeStore';
+import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 
 export default function Header() {
-  const navMenu = ['소개', '작업물', '기술', '연락처'];
+  const navMenu = [
+    { title: '소개', id: 'heroSection' },
+    { title: '작업물', id: 'worksSection' },
+    { title: '기술', id: 'skillsSection' },
+    { title: '연락처', id: 'contactSection' },
+  ];
   const theme = useThemeStore((state) => state.theme);
   const setTheme = useThemeStore((state) => state.setTheme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const [show, setShow] = useState<boolean>(false); //처음 들어왔을때
+  const [hidden, setHidden] = useState<boolean>(false); // 헤더 숨김 여부
+  const [lastScrollY, setLastScrollY] = useState<number>(0); // 마지막 스크롤 위치
+  const isNavigating = useRef<boolean>(false);
+  const activeSection = useActiveSectionStore((state) => state.activeSection);
 
   useEffect(() => {
     const stored = (localStorage.getItem('theme') as 'light' | 'dark') || null;
@@ -19,9 +30,69 @@ export default function Header() {
     setTheme(initial);
   }, [setTheme]);
 
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    function update() {
+      const currentScrollY = window.scrollY;
+
+      // 내비게이션 중이면 스킵
+      if (isNavigating.current) {
+        ticking = false;
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 54) {
+        // 스크롤 내릴 때 (54 이상 내려간 경우만 헤더 숨김)
+        setHidden(true);
+      } else {
+        // 스크롤 올리거나 멈췄을 때 → 헤더 보임
+        setHidden(false);
+      }
+
+      setLastScrollY(currentScrollY);
+      ticking = false;
+    }
+
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
+  // 네비게이션 클릭 핸들러
+  function handleNavClick() {
+    isNavigating.current = true;
+    setHidden(false); // 무조건 보이게
+
+    setTimeout(() => {
+      isNavigating.current = false;
+    }, 1400); // 스크롤 애니메이션 끝날 시간만큼
+  }
+
   return (
     <header
-      className="sticky top-[-1px] right-[0] flex justify-end z-100 mr-[-45px]"
+      className={`sticky top-0 right-[0] flex justify-end z-100 mr-[-45px],
+        will-change-transform ${
+          !show
+            ? 'opacity-0 translate-x-[80px]'
+            : 'opacity-100 translate-0 duration-800 delay-600'
+        } ${
+          hidden
+            ? '-translate-y-[60px] duration-300 delay-0'
+            : 'translate-y-0 duration-300 delay-0'
+        } transition-all `}
     >
       <nav
         className="bg-header-txt border-background shadow-header w-auto
@@ -31,14 +102,16 @@ export default function Header() {
         <ul className="flex w-auto gap-[5.2rem] px-[4rem] py-[1.2rem]">
           {navMenu.map((menu, index) => {
             return (
-              <li key={menu + index}>
+              <li key={menu.title + index}>
                 <Link
-                  href="/"
-                  className="text-background hover:text-header-txt-point
-                    text-[2rem] font-normal transition-all duration-300
-                    ease-in-out hover:font-bold"
+                  href={`#${menu.id}`}
+                  className={`text-background hover:text-header-txt-point
+                  text-[2rem] font-normal transition-all duration-300
+                  ease-in-out hover:font-bold
+                  ${activeSection === menu.id ? 'text-header-txt-point font-bold' : ''}`}
+                  onClick={handleNavClick}
                 >
-                  {menu}
+                  {menu.title}
                 </Link>
               </li>
             );

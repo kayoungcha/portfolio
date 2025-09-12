@@ -1,12 +1,42 @@
-// import IconWrite from '../assets/icon/icon_write.svg?react';
+'use client';
 
 import Image from 'next/image';
 import TitleText from './TitleText';
+import { useEffect, useRef } from 'react';
+import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 
 export default function Footer() {
+  const contactSectionRef = useRef<HTMLElement | null>(null);
+  const setActiveSection = useActiveSectionStore(
+    (state) => state.setActiveSection
+  );
+
+  useEffect(() => {
+    const el = contactSectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection('contactSection');
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(el);
+    return () => observer.unobserve(el);
+  }, [setActiveSection]);
+
   return (
     <footer>
-      <section className="relative h-[480px]">
+      <section
+        ref={contactSectionRef}
+        id="contactSection"
+        className="relative h-[480px]"
+      >
         <div
           className="w-full h-full absolute left-0 top-0 z-200 p-[40px] flex
             flex-col items-center"

@@ -3,6 +3,9 @@
 
 :root {
   font-size: 10px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+
   --background: #ffffff;
   --foreground: #1f1f1f;
   /* 공통 컬러  */
@@ -196,4 +199,26 @@ body {
 .animate-circle_ani3 {
   animation: circle_ani3 12s ease-in-out infinite;
   will-change: transform;
+}
+
+@keyframes mainChip_ani {
+  0% {
+    transform: translate(var(--tx), var(--ty))
+      translate(var(--mx, 0), var(--my, 0)) scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    transform: translate(var(--tx), var(--ty))
+      translate(var(--mx, 0), var(--my, 0)) scale(1.2);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(var(--tx), var(--ty))
+      translate(var(--mx, 0), var(--my, 0)) scale(0.9);
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty))
+      translate(var(--mx, 0), var(--my, 0)) scale(1);
+    opacity: 1;
+  }
 }
