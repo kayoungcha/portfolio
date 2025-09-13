@@ -60,6 +60,7 @@ export interface work {
   type: string;
   name: string;
   mainImg: string;
+  modalImage: string[];
   desc: string;
   year: string;
   skill: string[];
@@ -72,6 +73,7 @@ export const workList: work[] = [
     type: 'web',
     name: 'Streaum',
     mainImg: '/assets/worksImages/img_streaum.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2024',
     skill: [
@@ -99,6 +101,11 @@ export const workList: work[] = [
     type: 'app',
     name: 'ANIDAR',
     mainImg: '/assets/worksImages/img_anidar.png',
+    modalImage: [
+      '/assets/worksImages/img_anidar.png',
+      '/assets/worksImages/img_anidar.png',
+      '/assets/worksImages/img_anidar.png',
+    ],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Ionic', 'Angular', 'Firebase', 'Capacitor'],
@@ -109,6 +116,7 @@ export const workList: work[] = [
     type: 'web',
     name: 'StartApp 메인 홈페이지',
     mainImg: '/assets/worksImages/img_startapp.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Angular', 'Firebase'],
@@ -119,6 +127,7 @@ export const workList: work[] = [
     type: 'app',
     name: 'Heyo',
     mainImg: '/assets/worksImages/img_heyo.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Ionic', 'Angular', 'Firebase', 'cordova'],
@@ -136,6 +145,7 @@ export const workList: work[] = [
     type: 'app',
     name: 'Heyo',
     mainImg: '/assets/worksImages/img_heyo.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Ionic', 'Angular', 'Firebase', 'cordova'],
@@ -153,6 +163,7 @@ export const workList: work[] = [
     type: 'app',
     name: 'Heyo',
     mainImg: '/assets/worksImages/img_heyo.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Ionic', 'Angular', 'Firebase', 'cordova'],
@@ -170,6 +181,7 @@ export const workList: work[] = [
     type: 'app',
     name: 'Heyo',
     mainImg: '/assets/worksImages/img_heyo.png',
+    modalImage: ['/assets/worksImages/img_streaum.png'],
     desc: '스트리머 팬덤 기반 게임 랭크 사이트',
     year: '2022',
     skill: ['Ionic', 'Angular', 'Firebase', 'cordova'],

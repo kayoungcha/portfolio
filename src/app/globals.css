@@ -262,4 +262,20 @@ body {
   animation-timing-function: cubic-bezier(0.3, 0.42, 0.92, 0.2);
   animation-fill-mode: forwards;
   will-change: transform, opacity;
+  animation-delay: 0.55s;
+}
+
+@keyframes modal-fade-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-modal-fade {
+  animation: modal-fade-in 0.3s ease-out forwards;
 }
