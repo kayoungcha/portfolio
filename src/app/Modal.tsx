@@ -42,7 +42,7 @@ export default function Modal({ isOpen, onClose, children }: Props) {
       onClick={onClose}
     >
       <div
-        className="bg-background rounded-[20px] shadow-lg p-[40px] max-w-[800px]
+        className="bg-background rounded-[20px] shadow-lg p-[32px] max-w-[800px]
           w-full h-full min-h-[700px] max-h-[70%] animate-modal-fade
           overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
