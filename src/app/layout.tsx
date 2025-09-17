@@ -55,7 +55,7 @@ export default function RootLayout({
         >
           <Header></Header>
           {children}
-          <div id="modal-root" />
+          <div id="modalRoot" />
         </div>
         <Footer></Footer>
       </body>

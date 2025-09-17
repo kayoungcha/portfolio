@@ -274,3 +274,11 @@ body {
 .animate-modal-fade {
   animation: modal-fade-in 0.3s ease-out forwards;
 }
+
+/*  modal */
+#modalRoot .content_desc::-webkit-scrollbar {
+  width: 6px; /* 기본 8~12px → 더 얇게 */
+}
+#modalRoot .content_desc {
+  scrollbar-width: thin; /* Firefox */
+}

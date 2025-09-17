@@ -2,7 +2,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import IconDownMore from '../../public/assets/icon_down_more.svg';
 import WorksNav from '@/component/WorksNav';
-import { workList, workNavDesc } from '@/mockData/allData';
+import { ProjectDatas, workNavDesc } from '@/mockData/allData';
 import TitleText from '@/component/TitleText';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import WorkCard from '@/component/WorkCard';
@@ -45,12 +45,12 @@ export default function Works() {
   };
 
   const moreWorks = () => {
-    if (showWorksIndex >= workList.length) {
+    if (showWorksIndex >= ProjectDatas.length) {
       setShowWorksIndex(3);
       const worksSection = document.getElementById('worksSection');
       worksSection?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      setShowWorksIndex((prev) => prev + 3);
+      setShowWorksIndex((prev) => prev + 4);
     }
   };
 
@@ -73,7 +73,7 @@ export default function Works() {
         className={`text-[1.6rem] text-txt-quaternary mb-[18px]
           ${show ? 'animate-fade_up_ani duration-500' : ''}`}
       >
-        모든 작업물은 최신순으로 정리되어 있습니다.
+        모든 작업물은 중요도 순으로 정리되어 있습니다.
       </p>
 
       {/* NOTE 작업물 네비 */}
@@ -99,10 +99,10 @@ export default function Works() {
         className={`works_area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
           w-full gap-x-[24px] gap-y-[45px] mb-[40px] px-[4rem] `}
       >
-        {workList.slice(0, showWorksIndex).map((item, index) => {
+        {ProjectDatas.slice(0, showWorksIndex).map((item, index) => {
           return (
             <WorkCard
-              key={item.name + index}
+              key={item.title + index}
               item={item}
               work={work}
               index={index}
@@ -117,7 +117,7 @@ export default function Works() {
           hover:text-background transition-color duration-200"
         onClick={() => moreWorks()}
       >
-        {showWorksIndex >= workList.length ? (
+        {showWorksIndex >= ProjectDatas.length ? (
           <>
             접기
             <IconDownMore

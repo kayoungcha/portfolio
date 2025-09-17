@@ -1,4 +1,4 @@
-type Props = { type: string; text: string; moreStyling?: string };
+type Props = { type: string; text: string; moreStyles?: string };
 
 export default function WorkTagChip(props: Props) {
   return (
@@ -7,7 +7,7 @@ export default function WorkTagChip(props: Props) {
         ${props.type === 'keyFeatures' ? 'text-works-background' : 'text-txt-tertiary/50'}
         ${props.type === 'design' ? 'bg-key-features-chip' : props.type === 'keyFeatures' ? 'bg-point-secondary' : 'bg-skill-chip'}
         ${props.type === 'design' ? 'border-outline-btn' : 'border-point-secondary'}
-        ${props.moreStyling ?? ''}`}
+        ${props.moreStyles ?? ''}`}
     >
       {props.text}
     </span>

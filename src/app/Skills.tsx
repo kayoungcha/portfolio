@@ -58,7 +58,7 @@ export default function Skills() {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.5 }
     );
 
     observer.observe(el);
@@ -101,7 +101,7 @@ export default function Skills() {
                 <WorkTagChip
                   type={'skill'}
                   text={item}
-                  moreStyling="text-[1.2rem] font-medium rounded-[14px] px-[12px] py-[2px]"
+                  moreStyles="text-[1.2rem] font-medium rounded-[14px] px-[12px] py-[2px]"
                 />
               </span>
             );
@@ -132,7 +132,7 @@ export default function Skills() {
                 <WorkTagChip
                   type={'design'}
                   text={item}
-                  moreStyling="text-[1.2rem] font-medium rounded-[14px] px-[12px] py-[2px]"
+                  moreStyles="text-[1.2rem] font-medium rounded-[14px] px-[12px] py-[2px]"
                 />
               </span>
             );
