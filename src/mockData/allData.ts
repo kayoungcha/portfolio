@@ -39,19 +39,19 @@ export const heroIcons = [
 
 export const workNavDesc = [
   {
-    id: '앱',
-    desc: `모바일 앱은 Ionic과 Angular를 이용한 하이브리드 앱으로 \nFirebase를 통해 서버리스 백엔드를 설계 및 구현까지 직접 진행하였습니다.`,
+    id: 'app',
+    desc: `모바일 앱은 Ionic과 Angular를 이용한 하이브리드 앱으로 Firebase를 통해 서버리스 백엔드를 설계 및 구현까지 직접 진행하였습니다.`,
   },
   {
-    id: '웹',
-    desc: `웹 작업은 각각 React, Angular, WordPress 세가지 작업 버전이 있습니다. \n React 작업은 퍼블리싱과 HTTP 프론트엔드 작업을 진행하였고 \nAngular 작업은 Firebase를 통한 서버리스 백엔드 설계 및 구현까지 진행하였습니다.`,
+    id: 'web',
+    desc: `웹 작업은 각각 React, Angular, WordPress 세가지 작업 버전이 있습니다.  React 작업은 퍼블리싱과 HTTP 프론트엔드 작업을 진행하였고 Angular 작업은 Firebase를 통한 서버리스 백엔드 설계 및 구현까지 진행하였습니다.`,
   },
   {
-    id: '퍼블리싱',
-    desc: `퍼블리셔로 시작해 퍼블리싱 작업이 많습니다. \n모든 퍼블리싱 작업은 Ionic/Angular로 작업되어있습니다.`,
+    id: 'publishing',
+    desc: `퍼블리셔로 시작해 퍼블리싱 작업이 많습니다. 모든 퍼블리싱 작업은 Ionic/Angular로 작업되어있습니다.`,
   },
   {
-    id: '개인작업',
+    id: 'other',
     desc: `포트폴리오 및 프로젝트를 진행하며 만들었던 실험용 개인작업`,
   },
 ];
@@ -235,6 +235,7 @@ export interface ProjectData {
   title: string; // 프로젝트명
   img: string;
   url?: string;
+  liveUrl?: string;
   description: string; // 한 줄 설명
   duration: string; // 개발 기간
   platforms: string[]; // 배포 플랫폼 (예: ["Android", "iOS", "Web"])
@@ -253,11 +254,12 @@ export const ProjectDatas: ProjectData[] = [
     type: 'web',
     title: 'Streaum',
     img: '/assets/worksImages/img_streaum.png',
-    url: 'https://streaum.com',
+    url: '',
+    liveUrl: 'https://streaum.com',
     platforms: ['WEB'],
     description: '크리에이터 팬덤 기반 게임 랭킹 커뮤니티 웹사이트',
     duration: '2024.03 ~ 2025.04',
-    role: `기획 20%\n데스크톱 앱 -> 웹사이트 전환 과정에서 추가 페이지 기획 참여\n메인 모달 화면, 스트리머 선택화면, 모바일 화면 설계 기획 참여\n 프론트엔드 개발 100%\n 전체 퍼블리싱 및 반응형 UI 구현\n 테블릿/모바일 레이아웃 & 에니메이션 구현\n HTTP API 연동 및 상태관리`,
+    role: `기획 20%\n데스크톱 앱 -> 웹사이트 전환 과정에서 추가 페이지 기획 참여메인 모달 화면, 스트리머 선택화면, 모바일 화면 설계 기획 참여 \n\n 프론트엔드 개발 100%\n전체 퍼블리싱 및 반응형 UI 구현 테블릿/모바일 레이아웃 & 에니메이션 구현 HTTP API 연동 및 상태관리`,
     skill: [
       'React',
       'Vite',
@@ -329,7 +331,7 @@ export const ProjectDatas: ProjectData[] = [
     description:
       '여성 건강과 라이프스타일을 위한 헬스·스파·테라피·산후조리원 커뮤니티 센터 앱',
     duration: '약 2개월',
-    role: `채팅 페이지 제외 프론트엔드 & firebase 백엔드 모두 개발\n수정 및 신규 기능 퍼블리싱 직접 구현`,
+    role: `채팅 페이지 제외 프론트엔드 & firebase 백엔드 모두 개발수정 및 신규 기능 퍼블리싱 직접 구현`,
     skill: ['Ionic', 'Angular', 'Firebase', 'Cordova'],
     keyFeatures: [
       { key: '예약 기능', value: '테라피, 식사, 카페시설 등 예약 기능' },
@@ -365,7 +367,7 @@ export const ProjectDatas: ProjectData[] = [
     platforms: ['web'],
     description: 'KN 큐레이션 회사 메인 홈페이지',
     duration: '약 6개월',
-    role: `초기 기획 단계부터 참여하여 카피라이트 톤 & 애니메이션 컨셉회의 기여\n 전체 퍼블리싱 중 전체 뼈대, 업무서비스(Android,iOS 개발), 포트폴리오(한라 제외), 간편견적 등을 담당 퍼블리셔 총 3명의 협업으로 진행된 프로젝트 \n 그외 모든 프론트&firebase 이용한 백엔드 개발은 100% 담당`,
+    role: `초기 기획 단계부터 참여하여 카피라이트 톤 & 애니메이션 컨셉회의 기여 전체 퍼블리싱 중 전체 뼈대, 업무서비스(Android,iOS 개발), 포트폴리오(한라 제외), 간편견적 등을 담당 퍼블리셔 총 3명의 협업으로 진행된 프로젝트  그외 모든 프론트&firebase 이용한 백엔드 개발은 100% 담당`,
     skill: [
       'Angular',
       'Typescript',
@@ -406,21 +408,20 @@ export const ProjectDatas: ProjectData[] = [
   {
     id: 'anidar-butler',
     type: 'app',
-    title: 'ANIDAR 버틀러앱 (직원용)',
+    title: 'ANIDAR 버틀러앱',
     img: '/assets/worksImages/img_anidarforbtuler.png',
     url: 'https://anidar-staff.firebaseapp.com/login',
     platforms: ['Android', 'iOS'],
-    description:
-      '시설 직원(버틀러, 테라피스트,쉐프, 배달서버, 주차, 카페, 신생아실) 전용 운영 관리 앱',
+    description: '시설 직원 전용 운영 관리 앱',
     duration: '약 2개월',
-    role: `신생아실 일부 기능 제외 프론트엔드 & firebase 백엔드 모두 개발\n수정 및 신규 기능 퍼블리싱 직접 구현`,
+    role: `신생아실 일부 기능 제외 프론트엔드 & firebase 백엔드 모두 개발수정 및 신규 기능 퍼블리싱 직접 구현`,
     skill: ['Ionic', 'Angular', 'Firebase', 'Cordova'],
     keyFeatures: [
       { key: '예약 확인기능', value: '테라피, 식사, 카페시설 등 예약 기능' },
       { key: 'QR 확인 기능', value: '시설 이용 시 QR 체크로 노쇼 확인' },
       {
         key: '각 로그인 유형별 개별 기능',
-        value: `버틀러: 회원 스케줄·일정 확인, 회원 채팅, 예약 확인 및 현장 포인트 차감, 휴무일 관리'\n '바디 테라피스트: 예약 일정 확인, 예약 완료 처리, 현장 QR 차감'\n '신생아실 간호사: 회원별 신생아 관찰지 입력'\n '주차 직원: 발렛 완료 및 상태 확인'\n '카페·델리 직원: 주문 접수 및 결제 처리 (키오스크 형태)'\n '쉐프·배달 서버: 조리·배달 상태 확인 및 완료 처리`,
+        value: `버틀러: 회원 스케줄·일정 확인, 회원 채팅, 예약 확인 및 현장 포인트 차감, 휴무일 관리' '바디 테라피스트: 예약 일정 확인, 예약 완료 처리, 현장 QR 차감' '신생아실 간호사: 회원별 신생아 관찰지 입력' '주차 직원: 발렛 완료 및 상태 확인' '카페·델리 직원: 주문 접수 및 결제 처리 (키오스크 형태)' '쉐프·배달 서버: 조리·배달 상태 확인 및 완료 처리`,
       },
     ],
     design: ['Sketch'],
@@ -457,7 +458,7 @@ export const ProjectDatas: ProjectData[] = [
     description:
       '회원 정보, 예약, 스케줄, 쇼핑몰 등 어플의 전반적인 서비스 운영을 관리하는 통합 웹 관리자 페이지',
     duration: '약 2주 - 3개월까지 (분량별로 상이)',
-    role: `단독 개발 (1:1문의, 커뮤니티 클럽, 서비스 정보 관리, 채팅관리 기능 제외)\nAngular 기반 샘플 페이지를 활용해 퍼블리싱 및 기능 구현`,
+    role: `단독 개발 (1:1문의, 커뮤니티 클럽, 서비스 정보 관리, 채팅관리 기능 제외)Angular 기반 샘플 페이지를 활용해 퍼블리싱 및 기능 구현`,
     skill: ['Angular', 'Firebase', 'Chart.js'],
     keyFeatures: [
       {
@@ -524,7 +525,7 @@ export const ProjectDatas: ProjectData[] = [
     platforms: ['Android', 'iOS'],
     description: '이웃 간 재능과 시간을 나누는 지역 기반 커뮤니티 앱',
     duration: '약 1개월',
-    role: `퍼블리싱(수정 및 추가 페이지)\n 인앱결제를 제외한 모든 페이지 개발`,
+    role: `퍼블리싱(수정 및 추가 페이지) 인앱결제를 제외한 모든 페이지 개발`,
     skill: ['Ionic', 'Angular', 'Firebase', 'Cordova', 'Google Maps API'],
     keyFeatures: [
       {
@@ -574,7 +575,7 @@ export const ProjectDatas: ProjectData[] = [
     platforms: ['Android', 'iOS'],
     description: '마음을 나누고 세상을 바꾸는 것을 목표로 한 커뮤니티 앱',
     duration: '약 3주',
-    role: `퍼블리싱(수정 및 추가 페이지)\n 모든 페이지 단독 개발`,
+    role: `퍼블리싱(수정 및 추가 페이지) 모든 페이지 단독 개발`,
     skill: ['Ionic', 'Angular', 'Firebase', 'Cordova'],
     keyFeatures: [
       {
@@ -637,7 +638,7 @@ export const ProjectDatas: ProjectData[] = [
     platforms: ['Android', 'iOS'],
     description: '미션 기반 참여형 피드를 제공하는 커뮤니티 앱',
     duration: '약 1개월',
-    role: `Ionic3 → Ionic5 마이그레이션 담당\n퍼블리셔에서 개발자로 전환하게 된 첫 프로젝트`,
+    role: `Ionic3 → Ionic5 마이그레이션 담당퍼블리셔에서 개발자로 전환하게 된 첫 프로젝트`,
     skill: ['Ionic', 'Angular', 'Firebase', 'Cordova'],
     keyFeatures: [
       {

@@ -276,9 +276,18 @@ body {
 }
 
 /*  modal */
-#modalRoot .content_desc::-webkit-scrollbar {
+#modalRoot div::-webkit-scrollbar {
   width: 6px; /* 기본 8~12px → 더 얇게 */
 }
-#modalRoot .content_desc {
+#modalRoot div {
   scrollbar-width: thin; /* Firefox */
+}
+
+/* 공통 css */
+.modal_txt {
+  font-size: 1.4rem;
+  font-weight: 300;
+  white-space: pre-line;
+  word-break: keep-all;
+  color: var(--color-txt-quaternary);
 }

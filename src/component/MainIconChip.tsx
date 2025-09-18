@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import { useWindowWidthStore } from '@/store/useWindowWidthStore';
 import Image from 'next/image';
 import { CSSProperties, useEffect, useRef } from 'react';
 
@@ -15,6 +15,7 @@ type Props = {
 export default function MainIconChip(props: Props) {
   // 아이콘 ref
   const chipRef = useRef<HTMLDivElement | null>(null);
+  const width = useWindowWidthStore((state) => state.width);
 
   // 마우스 이벤트
   useEffect(() => {
@@ -61,17 +62,17 @@ export default function MainIconChip(props: Props) {
     <div
       ref={chipRef}
       style={{
-        left: '50%',
-        top: '50%',
+        left: width < 640 ? 0 : '50%',
+        top: width < 640 ? 0 : '50%',
         transform: `translate(calc(-50% - ${props.position.x}px), calc(-50% - ${props.position.y}px))`,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ['--tx' as any]: `calc(-50% - ${props.position.x}px)`,
         ['--ty' as any]: `calc(-50% - ${props.position.y}px)`,
         ...props.moreStyles,
       }}
-      className={`absolute bg-background shadow-icon-chip flex items-center
-        justify-center rounded-[14px] ${props.size > 45 ? 'p-[4px]' : 'p-[8px]'}
-        opacity-0 will-change-transform
+      className={`relative sm:absolute bg-background shadow-icon-chip flex w-fit
+        h-fit items-center justify-center rounded-[14px]
+        ${props.size > 45 ? 'p-[4px]' : 'p-[8px]'} opacity-0
+        will-change-transform
         [transform:translate(var(--tx),var(--ty))_translate(var(--mx,0),var(--my,0))_scale(1)]
         transition-transform duration-200 ease-out `}
     >
@@ -79,8 +80,8 @@ export default function MainIconChip(props: Props) {
         className="block"
         src={props.iconSrc}
         alt={props.alt}
-        width={props.size}
-        height={props.size}
+        width={width < 640 ? 24 : props.size}
+        height={width < 640 ? 24 : props.size}
       />
     </div>
   );

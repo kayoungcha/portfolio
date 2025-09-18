@@ -9,7 +9,7 @@ type Props = {
 export default function ModalSubTitle({ firstTxt, title, moreStyles }: Props) {
   return (
     <h6
-      className={`text-txt-quaternary font-bold text-[1.4rem] mb-[8px]
+      className={`text-txt-quaternary font-bold text-[1.45rem] mb-[8px]
         ${moreStyles ?? moreStyles}`}
     >
       {firstTxt && <span className="text-primary/70">{firstTxt}</span>}

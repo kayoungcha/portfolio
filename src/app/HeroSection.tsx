@@ -9,10 +9,13 @@ import MainIconChip from '@/component/MainIconChip';
 import IconOpen from '../../public/assets/icon_open.svg';
 import IconDownArrow from '../../public/assets/icon-down-arrow.svg';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
+import { useWindowWidthStore } from '@/store/useWindowWidthStore';
 
 export default function HeroSection() {
   const [show, setShow] = useState<boolean>(false);
   const heroSectionRef = useRef<HTMLElement | null>(null);
+  const width = useWindowWidthStore((state) => state.width);
+
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
@@ -39,14 +42,51 @@ export default function HeroSection() {
     return () => observer.unobserve(el);
   }, [setActiveSection]);
 
+  const viewWorks = () => {
+    const section = document.getElementById('worksSection');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  console.log(width);
+
   return (
     <section
       ref={heroSectionRef}
       id="heroSection"
-      className="w-full h-auto relative"
+      className="relative w-full h-auto"
     >
-      <div className="main_background absolute top-0 left-0 w-full h-full z-0">
+      <div
+        className="main_background absolute top-[190px] left-[10px] sm:top-0
+          sm:left-0 w-full h-full z-0 flex align-center justify-center
+          gap-x-[8px]"
+      >
         {heroIcons.map((icon, index) => {
+          const positionX =
+            width <= 1024 && width >= 768
+              ? icon.position.x < 0
+                ? icon.position.x + 80
+                : icon.position.x - 80
+              : width < 768 && width >= 640
+                ? icon.position.x < 0
+                  ? icon.position.x + 120
+                  : icon.position.x - 120
+                : width < 640
+                  ? icon.position.x < 0
+                    ? icon.position.x * 0
+                    : icon.position.x * 0
+                  : icon.position.x;
+
+          const positionY =
+            width < 768 && width >= 640
+              ? icon.position.y < 0
+                ? icon.position.y - 150
+                : icon.position.y - 50
+              : width < 640
+                ? icon.position.y < 0
+                  ? icon.position.y * 0
+                  : icon.position.y * 0
+                : icon.position.y;
+
           return (
             <MainIconChip
               key={icon.name}
@@ -55,12 +95,9 @@ export default function HeroSection() {
               position={icon.position}
               size={icon.size}
               moreStyles={{
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                ['--tx' as any]: `calc(-50% - ${icon.position.x}px)`,
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                ['--ty' as any]: `calc(-50% - ${icon.position.y}px)`,
+                ['--tx' as any]: `calc(-50% - ${positionX}px)`,
+                ['--ty' as any]: `calc(-50% - ${positionY}px)`,
                 animation: `mainChip_ani ${(index + 1) * 0.3}s 1s cubic-bezier(0.34,1.56,0.64,1) forwards `,
-                // transition: `opacity ${index % 2 === 0 ? index * 0.5 : index * 0.4}s ease-in-out`,
               }}
             ></MainIconChip>
           );
@@ -68,10 +105,11 @@ export default function HeroSection() {
       </div>
       <div className="main relative z-10">
         <h1
-          className={`text-txt-secondary m-auto mb-[32px] text-center
-            text-[5.8rem]
+          className={`text-txt-secondary m-auto mb-[100px] sm:mb-[32px]
+            text-center text-[3.2rem] sm:text-[4.8rem] md:text-[5.2rem]
+            lg:text-[5.8rem]
             ${show ? 'translate-y-[0] opacity-100' : 'translate-y-[40px] opacity-0'}
-            transition-all duration-400 ease-linear`}
+            transition-all duration-400 ease-linear `}
         >
           안녕하세요.
           <span className="text-primary block font-medium">
@@ -80,7 +118,8 @@ export default function HeroSection() {
           <span className="font-bold">차가영</span> 입니다.
         </h1>
         <p
-          className={`text-txt-tertiary mb-[64px] text-center text-[2rem]
+          className={`text-txt-tertiary mb-[32px] md:mb-[64px] text-center
+            text-[1.4rem] sm:text-[1.6rem] lg:text-[2rem]
             ${show ? 'translate-y-[0] opacity-100' : 'translate-y-[40px] opacity-0'}
             transition-all duration-400 ease-linear delay-400`}
         >
@@ -95,13 +134,30 @@ export default function HeroSection() {
         >
           <FillButton
             text={'이력서 보러가기'}
-            className={'m-auto mb-[100px]'}
-            icon={<IconOpen aria-label="새창 열기 아이콘" />}
+            className={'m-auto mb-[40px] md:mb-[100px]'}
+            icon={
+              <IconOpen
+                aria-label="새창 열기 아이콘"
+                width={
+                  width < 1024 && width >= 640 ? 22 : width < 640 ? 18 : 26
+                }
+                height={
+                  width < 1024 && width >= 640 ? 22 : width < 640 ? 18 : 26
+                }
+              />
+            }
+            onClick={() =>
+              window.open(
+                'https://cyclic-wax-2df.notion.site/1c7f9546edb980219c92fd53785ebb70?source=copy_link',
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
           ></FillButton>
         </div>
         <p
-          className={`text-txt-secondary mb-32 text-center text-[2rem]
-            font-normal
+          className={`text-txt-secondary mb-32 text-center text-[1.4rem]
+            sm:text-[1.6rem] lg:text-[2rem] font-normal
             ${show ? 'translate-y-[0] opacity-100' : 'translate-y-[40px] opacity-0'}
             transition-all duration-400 ease-linear delay-800`}
         >
@@ -118,7 +174,8 @@ export default function HeroSection() {
           <OutLineButton
             text={'작업 보기'}
             icon={<IconDownArrow aria-label="내려가기 아이콘" />}
-            className={'m-auto mb-[200px] '}
+            className={'m-auto mb-[150px] lg:mb-[200px] '}
+            onClick={() => viewWorks()}
           ></OutLineButton>
         </div>
       </div>

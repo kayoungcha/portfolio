@@ -49,9 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={spoqa.className}>
-      <body className={'antialiased'}>
+      <body className={'antialiased min-w-[320px]'}>
         <div
-          className="wrap m-auto w-full max-w-[1200px] md:px-[80px] px-[40px]"
+          className="wrap m-auto w-full max-w-[1200px] px-[20px] md:px-[40px]
+            lg:px-[80px]"
         >
           <Header></Header>
           {children}

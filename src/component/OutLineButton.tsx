@@ -5,17 +5,18 @@ type Props = {
   text: string;
   icon?: ReactNode;
   className?: string;
+  onClick: () => void;
 };
 
 export default function OutLineButton(props: Props) {
   return (
-    <Link
+    <button
       className={`group w-fit bg-background text-txt-tertiary border-outline-btn
         hover:bg-outline-btn hover:text-background flex cursor-pointer
         items-center justify-center gap-x-[4px] rounded-full border-[1px]
-        px-[20px] py-[4px] text-[1.4rem] font-medium transition-all duration-200
-        ${props.className ?? ''}`}
-      href={'#worksSection'}
+        px-[20px] py-[4px] text-[1.2rem] md:text-[1.4rem] font-medium
+        transition-all duration-200 ${props.className ?? ''}`}
+      onClick={props.onClick}
     >
       {props.text}
       {props.icon && (
@@ -23,6 +24,6 @@ export default function OutLineButton(props: Props) {
           {props.icon}
         </span>
       )}
-    </Link>
+    </button>
   );
 }

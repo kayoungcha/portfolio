@@ -71,21 +71,23 @@ export default function Skills() {
       className={`${show ? 'animate-fade-up-ani' : 'opacity-0 translate-y-[40px]'}`}
     >
       <TitleText title={'사용 가능 기술'} styles={'mb-[24px]'} />
-      <p className="text-center text-[1.6rem] text-txt-quaternary mb-[80px]">
-        다양한 작업물을 경험하며 React / Angular 기반으로
-        <br />
-        아래 기술들을 익혔고 사용할 수 있습니다.
+      <p
+        className="text-center text-[1.4rem] sm:text-[1.6rem]
+          text-txt-quaternary mb-[80px] max-w-[35rem] m-auto break-keep"
+      >
+        다양한 작업물을 경험하며 React / Angular 기반으로 아래 기술들을 익혔고
+        사용할 수 있습니다.
       </p>
 
       <section
-        className="w-auto p-[40px] bg-background rounded-[24px]
+        className="w-auto p-[24px] sm:p-[40px] bg-background rounded-[24px]
           shadow-[0_4px_14px_-3px_rgba(209,228,209,0.7)]
           border-[rgba(209,228,209,0.5)] border-1 mb-[40px] max-w-[450px]
           m-auto"
       >
         <h3
-          className="text-[2rem] font-medium text-txt-quaternary mb-[24px]
-            text-center"
+          className="text-[1.6rem] sm:text-[2rem] font-medium
+            text-txt-quaternary mb-[24px] text-center break-keep"
         >
           프론트엔드 개발 & 데이터 관리
         </h3>
@@ -109,14 +111,14 @@ export default function Skills() {
         </div>
       </section>
       <section
-        className="w-auto p-[40px] bg-background rounded-[24px]
+        className="w-auto p-[24px] sm:p-[40px] bg-background rounded-[24px]
           shadow-[0_4px_14px_-3px_rgba(231,198,194,0.7)]
           border-[rgba(231,198,194,0.7)] border-1 mb-[150px] max-w-[450px]
           m-auto"
       >
         <h3
-          className="text-[2rem] font-medium text-txt-quaternary mb-[24px]
-            text-center"
+          className="text-[1.6rem] sm:text-[2rem] font-medium
+            text-txt-quaternary mb-[24px] text-center"
         >
           UI 스타일링 & 협업 생산성 도구
         </h3>

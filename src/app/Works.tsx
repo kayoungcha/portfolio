@@ -6,8 +6,10 @@ import { ProjectDatas, workNavDesc } from '@/mockData/allData';
 import TitleText from '@/component/TitleText';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import WorkCard from '@/component/WorkCard';
+import { useWindowWidthStore } from '@/store/useWindowWidthStore';
 
 export default function Works() {
+  const width = useWindowWidthStore((state) => state.width);
   const [work, setWorks] = useState<string>('');
   const [showWorksIndex, setShowWorksIndex] = useState<number>(3);
   const [show, setShow] = useState<boolean>(false);
@@ -42,6 +44,19 @@ export default function Works() {
 
   const activeWorksNav = (menu: string) => {
     setWorks(menu);
+    if (width < 1024 && !menu) {
+      setShowWorksIndex(3);
+    } else if (width < 1024 && menu) {
+      setShowWorksIndex(4);
+    } else {
+      setShowWorksIndex(3);
+    }
+  };
+
+  // type별 column span 정의
+  const getColSpan = (type: string) => {
+    if (type === 'web') return width < 1024 ? 1 : 2;
+    return 1;
   };
 
   const moreWorks = () => {
@@ -49,17 +64,31 @@ export default function Works() {
       setShowWorksIndex(3);
       const worksSection = document.getElementById('worksSection');
       worksSection?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      setShowWorksIndex((prev) => prev + 4);
+      return;
     }
-  };
 
+    let colCount = 0;
+    let addCount = 0;
+    const setCount = width < 1024 ? 4 : 3;
+
+    for (let i = showWorksIndex; i < ProjectDatas.length; i++) {
+      const item = ProjectDatas[i];
+      colCount += getColSpan(item.type);
+      addCount++;
+
+      if (colCount >= setCount) {
+        break; // 한 줄이 꽉 찼으면 멈춤
+      }
+    }
+
+    setShowWorksIndex((prev) => prev + addCount);
+  };
   return (
     <section
       ref={worksSectionRef}
       id="worksSection"
-      className={`works_wrap w-full min-h-screen pt-[4rem] mb-[100px] flex
-        flex-col items-center rounded-[16px] ${
+      className={`works_wrap w-full pt-[4rem] mb-[100px] flex flex-col
+        items-center rounded-[16px] ${
           show
             ? 'bg-works-background opacity-100 translate-0'
             : 'bg-background opacity-0 translate-y-[40px]'
@@ -70,22 +99,23 @@ export default function Works() {
         styles={`mb-[16px] ${show ? 'animate-fade_up_ani duration-450' : ''}`}
       ></TitleText>
       <p
-        className={`text-[1.6rem] text-txt-quaternary mb-[18px]
+        className={`text-[1.4rem] sm:text-[1.6rem] text-txt-quaternary mb-[18px]
           ${show ? 'animate-fade_up_ani duration-500' : ''}`}
       >
-        모든 작업물은 중요도 순으로 정리되어 있습니다.
+        작업물은 중요도 순으로 정리되어 있습니다.
       </p>
 
       {/* NOTE 작업물 네비 */}
       <WorksNav
         updateWork={activeWorksNav}
-        styles={`mb-[24px] ${show ? 'animate-fade_up_ani duration-550' : ''}`}
+        styles={`mb-[16px] ${show ? 'animate-fade_up_ani duration-550' : ''}`}
       ></WorksNav>
       <p
-        className={`text-txt-quaternary text-[1.6rem] text-center
-          whitespace-pre-line
-          ${!work ? 'max-h-0 opacity-0' : 'max-h-[50rem] opacity-100'} mb-[80px]
-          transition-all duration-400 ease-linear`}
+        className={`text-txt-quaternary text-[1.2rem] sm:text-[1.4rem]
+          lg:text-[1.6rem] text-center whitespace-pre-line max-w-[500px]
+          break-keep px-[20px]
+          ${!work ? 'max-h-0 opacity-0' : 'max-h-[50rem] opacity-100'} mb-[40px]
+          lg:mb-[80px] transition-all duration-400 ease-linear `}
       >
         {workNavDesc
           .filter((ele) => ele.id === work)
@@ -97,18 +127,27 @@ export default function Works() {
       {/* NOTE 카드 뷰 */}
       <div
         className={`works_area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-          w-full gap-x-[24px] gap-y-[45px] mb-[40px] px-[4rem] `}
+          w-full h-full sm:gap-x-[24px] gap-y-[45px] mb-[40px] px-[1rem]
+          sm:px-[4rem] `}
       >
-        {ProjectDatas.slice(0, showWorksIndex).map((item, index) => {
-          return (
-            <WorkCard
-              key={item.title + index}
-              item={item}
-              work={work}
-              index={index}
-            ></WorkCard>
-          );
-        })}
+        {ProjectDatas.filter((ele) => {
+          if (!work) {
+            return ele;
+          } else if (ele.type === work) {
+            return ele;
+          }
+        })
+          .slice(0, showWorksIndex)
+          .map((item, index) => {
+            return (
+              <WorkCard
+                key={item.title + index}
+                item={item}
+                work={work}
+                index={index}
+              ></WorkCard>
+            );
+          })}
       </div>
       <button
         className="flex items-center justify-center gap-x-[4px] text-[1.8rem]

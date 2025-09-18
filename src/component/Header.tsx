@@ -82,31 +82,35 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 right-[0] flex justify-end z-100 mr-[-45px],
-        will-change-transform ${
+      className={`sticky top-0 right-0 flex justify-end z-100 sm:mr-[-45px],
+        will-change-transform w-full ${
           !show
             ? 'opacity-0 translate-x-[80px]'
             : 'opacity-100 translate-0 duration-800 delay-600'
         } ${
           hidden
-            ? '-translate-y-[60px] duration-300 delay-0'
+            ? '-translate-y-[100px] duration-300 delay-0'
             : 'translate-y-0 duration-300 delay-0'
         } transition-all `}
     >
       <nav
-        className="bg-header-txt border-background shadow-header w-auto
-          rounded-b-[16px] border-1 backdrop-blur-xs relative z-10 border-t-0"
+        className="bg-header-txt border-background shadow-header w-full
+          sm:w-auto rounded-b-[16px] border-1 backdrop-blur-xs relative z-10
+          border-t-0"
       >
         {/* 메인 네비 */}
-        <ul className="flex w-auto gap-[5.2rem] px-[4rem] py-[1.2rem]">
+        <ul
+          className="flex w-auto justify-between sm:gap-[5.2rem] px-[2rem]
+            py-[1.2rem] sm:px-[4rem] sm:py-[1.2rem]"
+        >
           {navMenu.map((menu, index) => {
             return (
               <li key={menu.title + index}>
                 <Link
                   href={`#${menu.id}`}
                   className={`text-background hover:text-header-txt-point
-                  text-[2rem] font-normal transition-all duration-300
-                  ease-in-out hover:font-bold
+                  text-[1.4rem] sm:text-[2rem] font-normal transition-all
+                  duration-300 ease-in-out hover:font-bold
                   ${activeSection === menu.id ? 'text-header-txt-point font-bold' : ''}`}
                   onClick={handleNavClick}
                 >
@@ -120,8 +124,9 @@ export default function Header() {
 
       {/* 다크/라이트 모드 버튼 */}
       <div
-        className={`relative top-[-6px] flex w-auto items-center justify-center
-          ${theme === 'dark' && 'pr-[0.6rem] '}`}
+        className={` absolute sm:relative top-[38px] sm:top-[-6px] flex w-auto
+          items-center justify-center ${theme === 'dark' && 'pr-[0.6rem] '}
+          rotate-[90deg] sm:rotate-0`}
       >
         <span
           className="bg-header-txt relative z-1 flex h-[1.4rem] w-[3.4rem]
