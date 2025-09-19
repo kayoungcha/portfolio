@@ -4,13 +4,14 @@ import Image from 'next/image';
 import TitleText from './TitleText';
 import { useEffect, useRef, useState } from 'react';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
+import { useThemeStore } from '@/store/useThemeStore';
 
 export default function Footer() {
+  const theme = useThemeStore((state) => state.theme);
   const contactSectionRef = useRef<HTMLElement | null>(null);
   const [show, setShow] = useState<boolean>(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const [showIcon, setShowIcon] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [showIcon, setShowIcon] = useState<string>('');
   const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
   const setActiveSection = useActiveSectionStore(
@@ -57,9 +58,8 @@ export default function Footer() {
   // copy event
   const handleCopy = (e: React.MouseEvent, copyString: string) => {
     navigator.clipboard.writeText(copyString).then(() => {
-      setPos({ x: e.clientX, y: e.clientY - 310 });
-      setShowIcon(true);
-      setTimeout(() => setShowIcon(false), 400);
+      setShowIcon(copyString);
+      setTimeout(() => setShowIcon(''), 500);
     });
   };
 
@@ -89,8 +89,9 @@ export default function Footer() {
 
           <ul
             className={`border-1 border-outline-btn bg-background
-              backdrop-blur-[40px] shadow-[6px_7px_15.4px_0_rgba(0,0,0,0.1)]
-              w-fit rounded-[20px] grid grid-rows-3 overflow-hidden mb-[40px]
+              dark:bg-foreground/20 backdrop-blur-[40px]
+              shadow-[6px_7px_15.4px_0_rgba(0,0,0,0.1)] w-fit rounded-[20px]
+              grid grid-rows-3 overflow-hidden mb-[40px]
               ${show ? 'animate-fade-up-ani' : ''}`}
           >
             {[
@@ -101,10 +102,11 @@ export default function Footer() {
               return (
                 <li
                   key={val}
-                  className="group hover:bg-outline-btn h-[48px] sm:h-[60px]"
+                  className="group hover:bg-outline-btn
+                    dark:hover:bg-outline-btn/50 h-[48px] sm:h-[60px]"
                 >
                   <button
-                    className="w-full h-full text-[rgba(30,30,30,.68)]
+                    className="relative w-full h-full text-txt-contact
                       text-[1.6rem] sm:text-[1.8rem] lg:text-[2rem]
                       group-hover:text-background group-hover:font-medium
                       cursor-pointer px-[24px] sm:px-[60px] text-center
@@ -116,40 +118,44 @@ export default function Footer() {
                     {index === 0 && hoverIndex === index
                       ? 'rkdud9941@gmail.com'
                       : val}
+                    {index === 0 && showIcon === 'rkdud9941@gmail.com' && (
+                      <div
+                        className="absolute min-w-[180px] w-fit flex
+                          items-center justify-center h-auto text-point
+                          transition-opacity duration-500 gap-x-[4px]
+                          bg-foreground/50 backdrop-blur-[20px] py-[4px]
+                          px-[12px] rounded-2xl overflow-hidden font-medium
+                          z-999"
+                        style={{
+                          left: '50%',
+                          top: '50%',
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-10"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                          />
+                        </svg>
+                        <span className="text-[1.4rem] block">
+                          복사 되었습니다!
+                        </span>
+                      </div>
+                    )}
                   </button>
                 </li>
               );
             })}
           </ul>
-          {showIcon && (
-            <div
-              className="fixed text-point transition-opacity duration-500 z-999
-                flex items-center gap-x-[4px] bg-foreground/10
-                backdrop-blur-[4px] py-[4px] px-[12px] rounded-2xl
-                overflow-hidden font-medium"
-              style={{
-                left: pos.x,
-                top: pos.y,
-                transform: 'translate(-50%, -50%)',
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="size-10"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
-                />
-              </svg>
-              <span className="text-[1.4rem]">복사 되었습니다!</span>
-            </div>
-          )}
 
           <ul
             className={`flex gap-x-0 max-w-[280px] w-full justify-between
@@ -174,6 +180,38 @@ export default function Footer() {
                   onClick={(e) => handleCopy(e, '010-2525-3132')}
                 >
                   ☎️
+                  {showIcon === '010-2525-3132' && (
+                    <div
+                      className="absolute min-w-[180px] w-fit flex items-center
+                        justify-center h-auto text-point transition-opacity
+                        duration-500 gap-x-[4px] bg-foreground/50
+                        backdrop-blur-[20px] py-[4px] px-[12px] rounded-2xl
+                        overflow-hidden font-medium z-999"
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-10"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                        />
+                      </svg>
+                      <span className="text-[1.4rem] block">
+                        복사 되었습니다!
+                      </span>
+                    </div>
+                  )}
                 </button>
               )}
             </li>
@@ -186,12 +224,21 @@ export default function Footer() {
                   handleWindowOpen('https://github.com/kayoungcha')
                 }
               >
-                <Image
-                  width={48}
-                  height={48}
-                  src="/assets/icon_git_logo.svg"
-                  alt="깃 아이콘"
-                />
+                {theme === 'light' ? (
+                  <Image
+                    width={48}
+                    height={48}
+                    src="/assets/icon_git_logo.svg"
+                    alt="깃 아이콘"
+                  />
+                ) : (
+                  <Image
+                    width={48}
+                    height={48}
+                    src="/assets/icon_git_logo_w.svg"
+                    alt="깃 아이콘"
+                  />
+                )}
               </button>
             </li>
             <li>
@@ -212,8 +259,9 @@ export default function Footer() {
         </div>
         <div className={'relative overflow-hidden w-full h-full'}>
           <div
-            className={`absolute w-full h-full bg-[rgba(255,255,255,0.5)] left-0
-              top-0 z-100 backdrop-blur-[70px]`}
+            className={`absolute w-full h-full bg-[rgba(255,255,255,0.5)]
+              dark:bg-[rgba(56,56,56,0.5)] left-0 top-0 z-100
+              backdrop-blur-[70px]`}
           ></div>
           <span
             className="block absolute w-[263px] h-[263px] left-[637px]

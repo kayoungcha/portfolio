@@ -18,7 +18,7 @@ export default function ModalContentWeb({ item }: Props) {
     <div className={'content_area h-full w-full overflow-auto'}>
       <div
         className={`img_wrap relative max-w-full w-full max-h-[40%] h-full
-          object-contain group overflow-hidden`}
+          object-contain group overflow-hidden bg-black`}
       >
         <Image
           src={item.img}
@@ -40,8 +40,7 @@ export default function ModalContentWeb({ item }: Props) {
           href={item.liveUrl}
           target="_blank"
           className="text-[1.4rem] text-white inline-block text-center w-full
-            py-[8px] hover:font-medium transition-all duration-200
-            bg-foreground"
+            py-[8px] hover:font-medium transition-all duration-200 bg-black"
         >
           라이브 페이지 바로가기:&nbsp;&nbsp;
           <span> {item.liveUrl}</span>
@@ -51,8 +50,7 @@ export default function ModalContentWeb({ item }: Props) {
           href={item.url}
           target="_blank"
           className="text-[1.4rem] text-white inline-block text-center w-full
-            py-[8px] hover:font-medium transition-all duration-200
-            bg-foreground"
+            py-[8px] hover:font-medium transition-all duration-200 bg-black"
         >
           카피 페이지 바로가기:&nbsp;&nbsp;
           <span> {item.url}</span>

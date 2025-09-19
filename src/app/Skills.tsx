@@ -82,12 +82,13 @@ export default function Skills() {
       <section
         className="w-auto p-[24px] sm:p-[40px] bg-background rounded-[24px]
           shadow-[0_4px_14px_-3px_rgba(209,228,209,0.7)]
-          border-[rgba(209,228,209,0.5)] border-1 mb-[40px] max-w-[450px]
-          m-auto"
+          border-[rgba(209,228,209,0.5)] border-1 dark:border-2 mb-[40px]
+          max-w-[450px] m-auto"
       >
         <h3
           className="text-[1.6rem] sm:text-[2rem] font-medium
-            text-txt-quaternary mb-[24px] text-center break-keep"
+            text-txt-quaternary dark:text-foreground/80 mb-[24px] text-center
+            break-keep"
         >
           프론트엔드 개발 & 데이터 관리
         </h3>
@@ -113,12 +114,12 @@ export default function Skills() {
       <section
         className="w-auto p-[24px] sm:p-[40px] bg-background rounded-[24px]
           shadow-[0_4px_14px_-3px_rgba(231,198,194,0.7)]
-          border-[rgba(231,198,194,0.7)] border-1 mb-[150px] max-w-[450px]
-          m-auto"
+          border-[rgba(231,198,194,0.7)] border-1 dark:border-2 mb-[150px]
+          max-w-[450px] m-auto"
       >
         <h3
           className="text-[1.6rem] sm:text-[2rem] font-medium
-            text-txt-quaternary mb-[24px] text-center"
+            text-txt-quaternary dark:text-foreground/80 mb-[24px] text-center"
         >
           UI 스타일링 & 협업 생산성 도구
         </h3>

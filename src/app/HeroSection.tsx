@@ -10,8 +10,10 @@ import IconOpen from '../../public/assets/icon_open.svg';
 import IconDownArrow from '../../public/assets/icon-down-arrow.svg';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import { useWindowWidthStore } from '@/store/useWindowWidthStore';
+import { useThemeStore } from '@/store/useThemeStore';
 
 export default function HeroSection() {
+  const theme = useThemeStore((state) => state.theme);
   const [show, setShow] = useState<boolean>(false);
   const heroSectionRef = useRef<HTMLElement | null>(null);
   const width = useWindowWidthStore((state) => state.width);
@@ -42,7 +44,6 @@ export default function HeroSection() {
   }, [setActiveSection]);
 
   const icons = heroIcons.map((icon) => {
-    console.log({ icon });
     const positionX =
       width <= 1024 && width >= 768
         ? icon.position.x < 0
@@ -92,7 +93,7 @@ export default function HeroSection() {
           return (
             <MainIconChip
               key={icon.name}
-              iconSrc={icon.img}
+              iconSrc={theme !== 'dark' ? icon.img : icon.darkImg}
               alt={`${icon.name} icon`}
               position={icon.position}
               size={icon.size}

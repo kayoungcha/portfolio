@@ -33,8 +33,8 @@ export default function ModalTxtContent({ item }: Props) {
             moreStyles="!font-medium !text-txt-tertiary/60 !text-[1.25rem]"
           ></ModalSubTitle>
           <p
-            className="font-light text-[1.2rem] text-txt-tertiary relative
-              top-[8px]"
+            className="font-light dark:font-normal text-[1.2rem]
+              text-txt-tertiary relative top-[8px]"
           >
             {item.duration}
           </p>
@@ -77,7 +77,8 @@ export default function ModalTxtContent({ item }: Props) {
                       <span
                         className="text-center absolute
                           left-[calc(50%_-_2.15rem)] bottom-[-16px]
-                          text-[1.2rem] font-light text-black/70"
+                          text-[1.2rem] font-light dark:font-normal
+                          text-black/70 dark:text-white/70"
                       >
                         Android
                       </span>
@@ -96,7 +97,8 @@ export default function ModalTxtContent({ item }: Props) {
                       <span
                         className="text-center absolute
                           left-[calc(50%_-_0.9rem)] bottom-[-16px] text-[1.2rem]
-                          font-light text-black/70"
+                          font-light dark:font-normal text-black/70
+                          dark:text-white/70"
                       >
                         iOS
                       </span>
@@ -124,7 +126,8 @@ export default function ModalTxtContent({ item }: Props) {
                       <span
                         className="text-center absolute
                           left-[calc(50%_-_1.6rem)] bottom-[-16px] text-[1.2rem]
-                          font-light text-black/70"
+                          font-light dark:font-normal text-black/70
+                          dark:text-white/70"
                       >
                         {plat.toUpperCase()}
                       </span>
@@ -174,12 +177,13 @@ export default function ModalTxtContent({ item }: Props) {
             return (
               <li
                 key={item.title + 'detail' + ele.key}
-                className={`${item.type === 'web' && 'flex gap-[16px] items-center'}`}
+                className={`${item.type === 'web' && 'flex gap-[16px] items-center'}
+                `}
               >
                 <WorkTagChip
                   type={'keyFeatures'}
                   text={ele.key}
-                  moreStyles="font-medium text-[1.3rem] px-[1rem]  rounded-[24px] !text-background "
+                  moreStyles="font-medium text-[1.3rem] px-[1rem]  rounded-[24px] !text-background dark:!text-skill-chip/70 shrink-0"
                 />
 
                 <p className="py-[4px] mb-[4px] modal_txt">{ele.value}</p>

@@ -14,12 +14,10 @@
   --color-point: #e57373;
   --color-point-secondary: #d1e4d1;
   --color-fill-btn-txt: #ffffff;
-  --color-footer-txt: #000000;
-  --color-footer-background: #fafafa;
   --color-footer-top-line: #dcdcdc;
   --color-header-background: rgba(209, 228, 209, 0.7);
-  --color-skill-chip: #f8faf9;
   --color-key-features-chip: #fdf8f8;
+  --color-skill-chip: #f8faf9;
   /* 라이트 모드 */
   --color-txt-secondary: #111827;
   --color-txt-tertiary: #4a4a4a;
@@ -29,6 +27,10 @@
   --color-header-txt-point: #4b4b4b;
   --color-header-txt: #6d6d6d80;
   --color-works-background: #fafafa;
+  --color-txt-contact: rgba(30, 30, 30, 0.68);
+  --color-footer-background: #fafafa;
+  --color-footer-txt: #000000;
+
   /* 쉐도우 */
   --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
   --shadow-icon-chip: 3px 4px 15px -3px rgba(77, 77, 77, 0.25);
@@ -41,12 +43,16 @@
     --foreground: #ffffff;
     --color-txt-secondary: #ffffff;
     --color-txt-tertiary: rgba(255, 255, 255, 0.7);
-    --color-txt-quaternary: #6d6d6d;
+    --color-txt-quaternary: #cacacad8;
     --color-txt-point: #ffffff;
     --color-contact-title: rgba(255, 255, 255, 0.75);
     --color-header-txt-point: #ffffff;
     --color-header-txt: rgba(255, 255, 255, 0.5);
     --color-works-background: rgba(255, 255, 255, 0.05);
+    --color-txt-contact: rgba(219, 219, 219, 0.849);
+    --color-footer-background: #ffffff13;
+    --color-footer-txt: #ffffff;
+
     /* 쉐도우 */
     --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
     --shadow-icon-chip: 3px 4px 15px -3px rgba(255, 255, 255, 0.25);
@@ -59,12 +65,16 @@
   --foreground: #ffffff;
   --color-txt-secondary: #ffffff;
   --color-txt-tertiary: rgba(255, 255, 255, 0.7);
-  --color-txt-quaternary: #6d6d6d;
+  --color-txt-quaternary: #cacacad8;
   --color-txt-point: #ffffff;
   --color-contact-title: rgba(255, 255, 255, 0.75);
   --color-header-txt-point: #ffffff;
   --color-header-txt: rgba(255, 255, 255, 0.5);
   --color-works-background: rgba(255, 255, 255, 0.05);
+  --color-txt-contact: rgba(219, 219, 219, 0.849);
+  --color-footer-background: #ffffff13;
+  --color-footer-txt: #ffffff;
+
   /* 쉐도우 */
   --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
   --shadow-icon-chip: 3px 4px 15px -3px rgba(255, 255, 255, 0.25);
@@ -89,6 +99,9 @@
   --color-header-background: rgba(209, 228, 209, 0.7);
   --color-header-txt-point: #4b4b4b;
   --color-works-background: #fafafa;
+  --color-txt-contact: rgba(30, 30, 30, 0.68);
+  --color-footer-background: #fafafa;
+  --color-footer-txt: #000000;
 
   --shadow-header: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
   --shadow-icon-chip: 3px 4px 15px -3px rgba(77, 77, 77, 0.25);
@@ -117,7 +130,7 @@
   --color-header-txt-point: var(--color-header-txt-point);
   --color-header-txt: var(--color-header-txt);
   --color-works-background: var(--color-works-background);
-
+  --color-txt-contact: var(--color-txt-contact);
   /* shadow 지정 */
   --shadow-header: var(--shadow-header);
   --shadow-icon-chip: var(--shadow-icon-chip);

@@ -53,30 +53,38 @@ export default function WorkCard({ item, index, work }: Props) {
     <>
       <article
         ref={cardRef}
-        className={`group bg-background w-full lg:h-[700px] lg:max-h-[700px]
-          h-[600px] max-h-[600px] rounded-[24px] shadow-xl overflow-hidden
-          relative opacity-0 ${
+        className={`group bg-background w-[calc(100%)] lg:h-[700px]
+          lg:max-h-[700px] h-[600px] max-h-[600px] rounded-[24px] shadow-xl
+          overflow-hidden relative opacity-0 ${
             item.type === 'web' && (index === 0 || work === 'web')
               ? 'lg:col-span-3 md:col-span-2'
               : item.type === 'web' && index !== 0
                 ? 'lg:col-span-2'
                 : 'col-span-1'
           } cursor-pointer ${show ? 'animate-fade-up-ani' : ''}
-          hover:scale-[1.02] hover:shadow-2xl transition-all duration-300`}
+          hover:scale-[1.02] hover:shadow-2xl will-change-transform
+          transition-all duration-300`}
         onClick={() => setModalOpen(true)}
       >
-        <Image
-          src={item.img}
-          alt={item.title + '메인 이미지'}
-          width={1200}
-          height={400}
-          className="w-full max-h-[400px] h-full absolute z-0 object-cover
-            object-top scale-100 group-hover:scale-110 transition-all
-            duration-300"
-        />
+        <div
+          className="mask_area w-full h-full"
+          style={{
+            clipPath: 'inset(2px round 24px)', // 👈 border-radius 24px과 동일하게
+          }}
+        >
+          <Image
+            src={item.img}
+            alt={item.title + '메인 이미지'}
+            fill
+            className="w-full block max-h-[400px] h-full absolute z-1
+              object-cover object-top scale-100 group-hover:scale-110
+              translate-z-0 transition-all will-change-transform duration-300
+              backface-hidden"
+          />
+        </div>
         <div
           className="box w-full h-[300px] lg:h-[350px] bg-background absolute
-            left-0 bottom-0 z-10 px-[32px] py-[32px] lg:px-[40px] lg:py-[38px]
+            left-0 bottom-0 z-50 px-[32px] py-[32px] lg:px-[40px] lg:py-[38px]
             shadow-[3px_-4px_10px_1px_rgba(0,0,0,0.25)]"
         >
           <WorkTypeChip

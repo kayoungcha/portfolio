@@ -28,6 +28,12 @@ export default function Header() {
     ).matches;
     const initial = stored ?? (prefersDark ? 'dark' : 'light');
     setTheme(initial);
+
+    if (initial === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [setTheme]);
 
   useEffect(() => {
@@ -124,7 +130,7 @@ export default function Header() {
 
       {/* 다크/라이트 모드 버튼 */}
       <div
-        className={` absolute sm:relative top-[38px] sm:top-[-6px] flex w-auto
+        className={` absolute sm:relative top-[34px] sm:top-[-6px] flex w-auto
           items-center justify-center ${theme === 'dark' && 'pr-[0.6rem] '}
           rotate-[90deg] sm:rotate-0`}
       >
@@ -136,8 +142,8 @@ export default function Header() {
           onClick={() => toggleTheme()}
           className={`relative z-10 scale-[0.8] cursor-pointer text-[36px]
             opacity-90 transition-all duration-300 ease-in-out hover:scale-[1]
-            hover:opacity-100 ${
-              theme === 'dark' ? 'ml-[-3.6rem] rotate-[-20deg]' : 'ml-[-3rem]'
+            hover:opacity-100 left-[4px] top-[1px] sm:left-0 sm:top-0 ${
+              theme === 'dark' ? 'ml-[-3.6rem] rotate-[-20deg] ' : 'ml-[-3rem]'
             }`}
           title={theme === 'dark' ? '라이트 모드 전환' : '다크모드 전환'}
         >
