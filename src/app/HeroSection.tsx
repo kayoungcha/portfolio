@@ -15,7 +15,6 @@ export default function HeroSection() {
   const [show, setShow] = useState<boolean>(false);
   const heroSectionRef = useRef<HTMLElement | null>(null);
   const width = useWindowWidthStore((state) => state.width);
-
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
@@ -42,12 +41,41 @@ export default function HeroSection() {
     return () => observer.unobserve(el);
   }, [setActiveSection]);
 
+  const icons = heroIcons.map((icon) => {
+    console.log({ icon });
+    const positionX =
+      width <= 1024 && width >= 768
+        ? icon.position.x < 0
+          ? icon.position.x + 80
+          : icon.position.x - 80
+        : width < 768 && width >= 640
+          ? icon.position.x < 0
+            ? icon.position.x + 120
+            : icon.position.x - 120
+          : width < 640
+            ? icon.position.x < 0
+              ? icon.position.x * 0
+              : icon.position.x * 0
+            : icon.position.x;
+
+    const positionY =
+      width < 768 && width >= 640
+        ? icon.position.y < 0
+          ? icon.position.y - 150
+          : icon.position.y - 50
+        : width < 640
+          ? icon.position.y < 0
+            ? icon.position.y * 0
+            : icon.position.y * 0
+          : icon.position.y;
+
+    return { ...icon, position: { x: positionX, y: positionY } };
+  });
+
   const viewWorks = () => {
     const section = document.getElementById('worksSection');
     section?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  console.log(width);
 
   return (
     <section
@@ -60,33 +88,7 @@ export default function HeroSection() {
           sm:left-0 w-full h-full z-0 flex align-center justify-center
           gap-x-[8px]"
       >
-        {heroIcons.map((icon, index) => {
-          const positionX =
-            width <= 1024 && width >= 768
-              ? icon.position.x < 0
-                ? icon.position.x + 80
-                : icon.position.x - 80
-              : width < 768 && width >= 640
-                ? icon.position.x < 0
-                  ? icon.position.x + 120
-                  : icon.position.x - 120
-                : width < 640
-                  ? icon.position.x < 0
-                    ? icon.position.x * 0
-                    : icon.position.x * 0
-                  : icon.position.x;
-
-          const positionY =
-            width < 768 && width >= 640
-              ? icon.position.y < 0
-                ? icon.position.y - 150
-                : icon.position.y - 50
-              : width < 640
-                ? icon.position.y < 0
-                  ? icon.position.y * 0
-                  : icon.position.y * 0
-                : icon.position.y;
-
+        {icons.map((icon, index) => {
           return (
             <MainIconChip
               key={icon.name}
@@ -95,8 +97,8 @@ export default function HeroSection() {
               position={icon.position}
               size={icon.size}
               moreStyles={{
-                ['--tx' as any]: `calc(-50% - ${positionX}px)`,
-                ['--ty' as any]: `calc(-50% - ${positionY}px)`,
+                ['--tx' as any]: `calc(-50% - ${icon.position.x}px)`,
+                ['--ty' as any]: `calc(-50% - ${icon.position.y}px)`,
                 animation: `mainChip_ani ${(index + 1) * 0.3}s 1s cubic-bezier(0.34,1.56,0.64,1) forwards `,
               }}
             ></MainIconChip>
