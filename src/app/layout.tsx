@@ -3,7 +3,7 @@ import './globals.css';
 import localFont from 'next/font/local';
 import Header from '@/component/Header';
 import Footer from '@/component/Footer';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 const spoqa = localFont({
   src: [
     {
@@ -54,11 +54,12 @@ export default function RootLayout({
           className="wrap m-auto w-full max-w-[1200px] px-[20px] md:px-[40px]
             lg:px-[80px]"
         >
-          <Header></Header>
+          <Header />
           {children}
           <div id="modalRoot" />
         </div>
-        <Footer></Footer>
+        <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
