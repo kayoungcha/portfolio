@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
-import { ProjectData } from '@/mockData/allData';
 import { useState } from 'react';
 import Image from 'next/image';
-import IconClose from '../../public/assets/icon_close.svg';
+import IconClose from '../../../../public/assets/icon_close.svg';
 import Link from 'next/link';
 import ModalTxtContent from './ModalTxtContent';
+import { ProjectData } from '../../api/works/route';
 
 type Props = { item: ProjectData };
 

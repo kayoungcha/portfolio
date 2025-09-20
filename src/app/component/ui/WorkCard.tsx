@@ -4,13 +4,13 @@ import Image from 'next/image';
 import WorkTypeChip from './WorkTypeChip';
 import WorkTitle from './WorkTitle';
 import WorkTagChip from './WorkTagChip';
-import { ProjectData } from '@/mockData/allData';
 import { useEffect, useRef, useState } from 'react';
-import Modal from '@/app/Modal';
-import IconClose from '../../public/assets/icon_close.svg';
+import Modal from '@/app/component/sections/Modal';
+import IconClose from '../../../../public/assets/icon_close.svg';
 import React from 'react';
 import ModalContentWeb from './ModalContentWeb';
 import ModalContentApp from './ModalContentApp';
+import { ProjectData } from '../../api/works/route';
 
 type Props = { item: ProjectData; index: number; work: string };
 
@@ -58,9 +58,13 @@ export default function WorkCard({ item, index, work }: Props) {
           overflow-hidden relative opacity-0 ${
             item.type === 'web' && (index === 0 || work === 'web')
               ? 'lg:col-span-3 md:col-span-2'
-              : item.type === 'web' && index !== 0
-                ? 'lg:col-span-2'
-                : 'col-span-1'
+              : item.type === 'personalWork' &&
+                  (index === 0 || work === 'personalWork')
+                ? 'lg:col-span-3 md:col-span-2'
+                : (item.type === 'web' && index !== 0) ||
+                    (item.type === 'personalWork' && index !== 0)
+                  ? 'lg:col-span-2'
+                  : 'col-span-1'
           } cursor-pointer ${show ? 'animate-fade-up-ani' : ''}
           hover:scale-[1.02] hover:shadow-2xl will-change-transform
           transition-all duration-300`}

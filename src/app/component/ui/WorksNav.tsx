@@ -10,7 +10,7 @@ export default function WorksNav(props: Props) {
     { id: 'app', title: '앱' },
     { id: 'web', title: '웹' },
     { id: 'publishing', title: '퍼블리싱' },
-    { id: 'other', title: '개인작업' },
+    { id: 'personalWork', title: '개인작업' },
   ];
   const [activeMenu, setActiveMenu] = useState<string>('');
 

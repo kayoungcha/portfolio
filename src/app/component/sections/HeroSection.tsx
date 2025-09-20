@@ -2,12 +2,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { heroIcons } from '@/mockData/allData';
-import FillButton from '@/component/FillButton';
-import OutLineButton from '@/component/OutLineButton';
-import MainIconChip from '@/component/MainIconChip';
+import FillButton from '@/app/component/ui/FillButton';
+import OutLineButton from '@/app/component/ui/OutLineButton';
+import MainIconChip from '@/app/component/ui/MainIconChip';
 // 이미지
-import IconOpen from '../../public/assets/icon_open.svg';
-import IconDownArrow from '../../public/assets/icon-down-arrow.svg';
+import IconOpen from '../../../../public/assets/icon_open.svg';
+import IconDownArrow from '../../../../public/assets/icon-down-arrow.svg';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import { useWindowWidthStore } from '@/store/useWindowWidthStore';
 import { useThemeStore } from '@/store/useThemeStore';

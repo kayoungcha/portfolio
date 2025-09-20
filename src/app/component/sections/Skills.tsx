@@ -1,7 +1,7 @@
 'use client';
 
-import TitleText from '@/component/TitleText';
-import WorkTagChip from '@/component/WorkTagChip';
+import TitleText from '@/app/component/ui/TitleText';
+import WorkTagChip from '@/app/component/ui/WorkTagChip';
 import { frontEndSkill, workToolsSkill } from '@/mockData/allData';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import React, { useEffect, useRef, useState } from 'react';
@@ -27,8 +27,8 @@ export default function Skills() {
             setShow(true);
             frontChipRefs.current.forEach((chip) => {
               if (chip) {
-                const randomDelay = Math.random() * 800; // 0 ~ 800ms
-                const randomX = (Math.random() - 0.5) * 800; // -20px ~ +20px
+                const randomDelay = Math.random() * 500; // 0 ~ 800ms
+                const randomX = (Math.random() - 0.5) * 500; // -20px ~ +20px
                 const randomDeg = (Math.random() - 0.5) * 180; // -20px ~ +20px
                 const randomDuration = 600 + Math.random() * 600; // 0.4s ~ 1s
 
@@ -42,8 +42,8 @@ export default function Skills() {
             });
             toolChipRefs.current.forEach((chip) => {
               if (chip) {
-                const randomDelay = Math.random() * 1000; // 0 ~ 800ms
-                const randomX = (Math.random() - 0.5) * 1000; // -20px ~ +20px
+                const randomDelay = Math.random() * 700; // 0 ~ 800ms
+                const randomX = (Math.random() - 0.5) * 700; // -20px ~ +20px
                 const randomDuration = 500 + Math.random() * 600; // 0.4s ~ 1s
                 const randomDeg = -(Math.random() - 0.5) * 180; // -20px ~ +20px
 

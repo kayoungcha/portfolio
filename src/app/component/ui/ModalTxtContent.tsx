@@ -1,9 +1,9 @@
 import React from 'react';
 import ModalSubTitle from './ModalSubTitle';
-import { ProjectData } from '@/mockData/allData';
 import WorkTypeChip from './WorkTypeChip';
 import WorkTitle from './WorkTitle';
 import WorkTagChip from './WorkTagChip';
+import { ProjectData } from '../../api/works/route';
 
 type Props = { item: ProjectData };
 

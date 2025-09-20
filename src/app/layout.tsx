@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
-import Header from '@/component/Header';
-import Footer from '@/component/Footer';
+import Header from '@/app/component/sections/Header';
+import Footer from '@/app/component/sections/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 const spoqa = localFont({
   src: [

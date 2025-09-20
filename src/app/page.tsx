@@ -2,9 +2,9 @@
 import { useThemeStore } from '@/store/useThemeStore';
 
 // 컴포넌트
-import HeroSection from './HeroSection';
-import Works from './Works';
-import Skills from './Skills';
+import HeroSection from './component/sections/HeroSection';
+import Works from './component/sections/Works';
+import Skills from './component/sections/Skills';
 import { useEffect } from 'react';
 import { useWindowWidthStore } from '@/store/useWindowWidthStore';
 

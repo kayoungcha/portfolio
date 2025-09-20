@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import TitleText from './TitleText';
+import TitleText from '../ui/TitleText';
 import { useEffect, useRef, useState } from 'react';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
 import { useThemeStore } from '@/store/useThemeStore';

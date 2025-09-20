@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import { ProjectData } from '@/mockData/allData';
 import ModalSubTitle from './ModalSubTitle';
 import WorkTagChip from './WorkTagChip';
 import Image from 'next/image';
@@ -8,6 +7,7 @@ import Link from 'next/link';
 import WorkTypeChip from './WorkTypeChip';
 import WorkTitle from './WorkTitle';
 import ModalTxtContent from './ModalTxtContent';
+import { ProjectData } from '../../api/works/route';
 
 type Props = { item: ProjectData };
 

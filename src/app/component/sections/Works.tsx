@@ -1,12 +1,13 @@
 'use client';
 import { Fragment, useEffect, useRef, useState } from 'react';
-import IconDownMore from '../../public/assets/icon_down_more.svg';
-import WorksNav from '@/component/WorksNav';
-import { ProjectDatas, workNavDesc } from '@/mockData/allData';
-import TitleText from '@/component/TitleText';
+import IconDownMore from '../../../../public/assets/icon_down_more.svg';
+import WorksNav from '@/app/component/ui/WorksNav';
+import { workNavDesc } from '@/mockData/allData';
+import TitleText from '@/app/component/ui/TitleText';
 import { useActiveSectionStore } from '@/store/useActiveSectionStore';
-import WorkCard from '@/component/WorkCard';
+import WorkCard from '@/app/component/ui/WorkCard';
 import { useWindowWidthStore } from '@/store/useWindowWidthStore';
+import { ProjectData } from '../../api/works/route';
 
 export default function Works() {
   const width = useWindowWidthStore((state) => state.width);
@@ -17,6 +18,14 @@ export default function Works() {
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
+
+  const [projectData, setProjectData] = useState<ProjectData[]>([]);
+
+  useEffect(() => {
+    fetch('/api/works')
+      .then((res) => res.json())
+      .then((json) => setProjectData(json));
+  }, []);
 
   useEffect(() => {
     const el = worksSectionRef.current;
@@ -60,7 +69,7 @@ export default function Works() {
   };
 
   const moreWorks = () => {
-    if (showWorksIndex >= ProjectDatas.length) {
+    if (showWorksIndex >= projectData.length) {
       setShowWorksIndex(3);
       const worksSection = document.getElementById('worksSection');
       worksSection?.scrollIntoView({ behavior: 'smooth' });
@@ -71,8 +80,8 @@ export default function Works() {
     let addCount = 0;
     const setCount = width < 1024 ? 4 : 3;
 
-    for (let i = showWorksIndex; i < ProjectDatas.length; i++) {
-      const item = ProjectDatas[i];
+    for (let i = showWorksIndex; i < projectData.length; i++) {
+      const item = projectData[i];
       colCount += getColSpan(item.type);
       addCount++;
 
@@ -130,13 +139,14 @@ export default function Works() {
           w-full h-full sm:gap-x-[24px] gap-y-[45px] mb-[40px] px-[1rem]
           sm:px-[4rem] `}
       >
-        {ProjectDatas.filter((ele) => {
-          if (!work) {
-            return ele;
-          } else if (ele.type === work) {
-            return ele;
-          }
-        })
+        {projectData
+          .filter((ele) => {
+            if (!work) {
+              return ele;
+            } else if (ele.type === work) {
+              return ele;
+            }
+          })
           .slice(0, showWorksIndex)
           .map((item, index) => {
             return (
@@ -156,7 +166,7 @@ export default function Works() {
           hover:text-background transition-color duration-200"
         onClick={() => moreWorks()}
       >
-        {showWorksIndex >= ProjectDatas.length ? (
+        {showWorksIndex >= projectData.length ? (
           <>
             접기
             <IconDownMore
