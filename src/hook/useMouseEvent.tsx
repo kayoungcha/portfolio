@@ -23,8 +23,6 @@ export function useMouseEvent<T extends HTMLElement>(options: Options = {}) {
     const rectOf = () => el.getBoundingClientRect();
 
     function onMove(e: MouseEvent) {
-      console.log({ e });
-
       const rect = rectOf();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;

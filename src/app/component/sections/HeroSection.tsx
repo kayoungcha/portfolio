@@ -20,6 +20,7 @@ export default function HeroSection() {
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
+
   useEffect(() => {
     setShow(true);
   }, []);
