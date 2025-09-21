@@ -45,7 +45,10 @@ export const Primary: Story = {
 
 export const DarkMode: Story = {
   render: (args) => (
-    <div className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]">
+    <div
+      className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]"
+      data-theme="dark"
+    >
       <TemplateChip {...args} />{' '}
     </div>
   ),
@@ -55,7 +58,6 @@ export const DarkMode: Story = {
     position: { x: 0, y: 0 },
     size: 46,
     moreStyles: {
-      background: '#000000',
       boxShadow: '3px 4px 15px -3px rgba(255, 255, 255, 0.25)',
     },
   },

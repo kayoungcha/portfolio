@@ -12,20 +12,22 @@ type Story = StoryObj<typeof ModalSubTitle>;
 
 export const Primary: Story = {
   args: {
-    firstTxt: '첫글자',
-    title: '그외 제목',
+    firstTxt: '강조글자',
+    title: '그외제목',
   },
 };
 
 export const DarkMode: Story = {
   render: (args) => (
-    <div className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]">
+    <div
+      className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]"
+      data-theme="dark"
+    >
       <ModalSubTitle {...args} />
     </div>
   ),
   args: {
-    firstTxt: '첫',
-    title: '글자외 제목',
-    moreStyles: '!text-[#cacacad8]',
+    firstTxt: '강조글자',
+    title: '그외제목',
   },
 };

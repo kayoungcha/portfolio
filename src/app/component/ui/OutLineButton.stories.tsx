@@ -19,9 +19,9 @@ export const Primary: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const IconOutLineButton: Story = {
   args: {
-    text: 'Outline 아이콘 버튼',
+    text: '아이콘 Outline 버튼',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +43,14 @@ export const WithIcon: Story = {
 
 export const DarkMode: Story = {
   render: (args) => (
-    <div className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]">
+    <div
+      className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]"
+      data-theme="dark"
+    >
       <OutLineButton {...args} />
     </div>
   ),
   args: {
     text: 'Outline 다크모드',
-    className: 'bg-black !text-[#ffffffb3] hover:!text-black',
   },
 };

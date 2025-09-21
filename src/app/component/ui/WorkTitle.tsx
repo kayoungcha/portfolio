@@ -3,7 +3,7 @@ type Props = {
   moreStyles?: string;
 };
 
-export default function workTitle(props: Props) {
+export default function WorkTitle(props: Props) {
   return (
     <h3
       className={`font-bold text-[2.2rem] lg:text-[2.4rem] truncate

@@ -55,7 +55,7 @@ export default function WorkCard({ item, index, work }: Props) {
         ref={cardRef}
         className={`group bg-background w-[calc(100%)] lg:h-[700px]
           lg:max-h-[700px] h-[600px] max-h-[600px] rounded-[24px] shadow-xl
-          overflow-hidden relative opacity-0 ${
+          overflow-hidden relative opacity-0 dark:shadow-[#5c5c5c28] ${
             item.type === 'web' && (index === 0 || work === 'web')
               ? 'lg:col-span-3 md:col-span-2'
               : item.type === 'personalWork' &&

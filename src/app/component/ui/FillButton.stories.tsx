@@ -19,7 +19,7 @@ export const Primary: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const IconFillButton: Story = {
   args: {
     text: '아이콘 Fill 버튼',
     icon: (
@@ -41,14 +41,16 @@ export const WithIcon: Story = {
   },
 };
 
-export const DarkMode: Story = {
+export const DarkModeFillButton: Story = {
   render: (args) => (
-    <div className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]">
+    <div
+      className="dark bg-black p-6 min-h-[calc(100vh_-_40px)]"
+      data-theme="dark"
+    >
       <FillButton {...args} />
     </div>
   ),
   args: {
     text: '다크 모드 Fill 버튼',
-    className: 'hover:bg-black',
   },
 };

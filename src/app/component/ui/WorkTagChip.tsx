@@ -6,18 +6,18 @@ export default function WorkTagChip(props: Props) {
       className={`inline-block border-1 dark:border-2 px-[0.8rem] rounded-[10px]
         text-[1.3rem] w-fit h-fit ${
           props.type === 'keyFeatures'
-            ? 'text-works-background dark:text-skill-chip/70'
+            ? 'text-works-background dark:text-skill-chip'
             : 'text-txt-tertiary/50 dark:text-foreground/90'
         } ${
           props.type === 'design'
             ? 'bg-key-features-chip dark:bg-outline-btn/50'
             : props.type === 'keyFeatures'
-              ? 'bg-point-secondary dark:bg-point-secondary/30'
+              ? 'bg-point-secondary dark:bg-point-secondary/80'
               : 'bg-skill-chip dark:bg-point-secondary/50'
         } ${
           props.type === 'design'
             ? 'border-outline-btn dark:border-key-features-chip'
-            : 'border-point-secondary dark:border-point-secondary'
+            : 'border-point-secondary dark:border-point-secondary/80'
         } ${props.moreStyles ?? ''}`}
     >
       {props.text}

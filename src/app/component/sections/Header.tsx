@@ -28,7 +28,6 @@ export default function Header() {
     ).matches;
     const initial = stored ?? (prefersDark ? 'dark' : 'light');
     setTheme(initial);
-
     if (initial === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
