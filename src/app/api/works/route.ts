@@ -776,7 +776,7 @@ export const ProjectDatas: ProjectData[] = [
     duration: '하루',
     platforms: ['Web'],
     role: '퍼블리싱 및 프론트엔드 작업',
-    skill: ['React', 'Storybook', 'Vercel'],
+    skill: ['React', 'Next.js', 'Storybook', 'Vercel'],
     keyFeatures: [
       {
         key: '컴포넌트 문서화',
@@ -791,7 +791,7 @@ export const ProjectDatas: ProjectData[] = [
         value: 'Vercel로 Storybook 전용 사이트 자동 배포',
       },
     ],
-    design: ['Figma', 'Tailwind CSS'],
+    design: ['Tailwind CSS'],
     challenges: [
       {
         key: '다크모드 지원',
