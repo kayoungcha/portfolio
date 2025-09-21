@@ -33,7 +33,23 @@ const spoqa = localFont({
 
 export const metadata: Metadata = {
   title: '차가영 포트폴리오',
-  description: '안녕하세요. 프론트엔드 개발자 차가영 포트폴리오입니다.',
+  description: '프론트엔드 개발자 차가영 포트폴리오',
+  openGraph: {
+    title: '차가영 포트폴리오',
+    description: '안녕하세요. 프론트엔드 개발자 차가영입니다.',
+    url: 'https://chaky-portfolio.vercel.app/',
+    siteName: '차가영 포트폴리오',
+    images: [
+      {
+        url: '/assets/img_my_og.png', // 👈 절대 경로
+        width: 1024,
+        height: 1024,
+        alt: '차가영 포트폴리오 대표 이미지',
+      },
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
 };
 
 export const viewport: Viewport = {
