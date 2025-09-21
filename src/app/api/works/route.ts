@@ -771,7 +771,7 @@ export const ProjectDatas: ProjectData[] = [
     type: 'personalWork',
     title: '포트폴리오 스토리북',
     img: '/assets/worksImages/img_my_storybook.png',
-    url: 'https://portfolio-storybook-pink.vercel.app/',
+    liveUrl: 'https://portfolio-storybook-pink.vercel.app/',
     description: '포트폴리오 재사용 가능 ui 컴포넌트들의 간단 스토리북',
     duration: '하루',
     platforms: ['Web'],
