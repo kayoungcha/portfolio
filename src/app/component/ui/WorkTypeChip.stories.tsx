@@ -8,7 +8,7 @@ const meta: Meta<typeof WorkTypeChip> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['web', 'app', 'publishing', 'other'],
+      options: ['web', 'app', 'publishing', 'personalWork'],
       description: '태그 타입',
     },
   },
@@ -27,7 +27,7 @@ export const Primary: Story = {
       <div className="flex gap-[40px] w-fit h-fit">
         <WorkTypeChip type="app"></WorkTypeChip>
         <WorkTypeChip type="web"></WorkTypeChip>
-        <WorkTypeChip type="other"></WorkTypeChip>
+        <WorkTypeChip type="personalWork"></WorkTypeChip>
       </div>
     </div>
   ),

@@ -766,6 +766,48 @@ export const ProjectDatas: ProjectData[] = [
       'https://www.notion.so/api-api-1c6f9546edb980cea0a2eea18f89550e?source=copy_link 관련 문서를 작성해 놓음으로써 협업에 더욱 기여함',
     ],
   },
+  {
+    id: 'storybook',
+    type: 'personalWork',
+    title: '포트폴리오 스토리북',
+    img: '/assets/worksImages/img_my_storybook.png',
+    url: 'https://portfolio-storybook-pink.vercel.app/',
+    description: '포트폴리오 재사용 가능 ui 컴포넌트들의 간단 스토리북',
+    duration: '하루',
+    platforms: ['Web'],
+    role: '퍼블리싱 및 프론트엔드 작업',
+    skill: ['React', 'Storybook', 'Vercel'],
+    keyFeatures: [
+      {
+        key: '컴포넌트 문서화',
+        value: '재사용 가능한 UI 컴포넌트를 예시로 문서화 함',
+      },
+      {
+        key: '상태별 프리뷰',
+        value: 'props 별로 변화를 확인 할 수 있음 ',
+      },
+      {
+        key: '배포 자동화',
+        value: 'Vercel로 Storybook 전용 사이트 자동 배포',
+      },
+    ],
+    design: ['Figma', 'Tailwind CSS'],
+    challenges: [
+      {
+        key: '다크모드 지원',
+        value:
+          '포트폴리오의 차별점 중 하나인 다크 모드를 스토리북에도 적용하고자 했으나, 스토리북 다크 모드 애드온이 버전 충돌로 설치되지 않아 data-theme, dark class 등을 활용해 직접 구현',
+      },
+      {
+        key: '환경 충돌 해결',
+        value:
+          'Next.js + Turbopack 환경에서 storybook-vite 설치 시 충돌 발생 → 공식 문서를 참고해 Next.js 전용 스토리북으로 재설치하여 문제 해결',
+      },
+    ],
+    achievements: [
+      'Vercel을 활용해 스토리북을 Next.js 기반 포트폴리오와 함께 자동 배포하며, 최적화된 배포 환경을 구축하고 운영 경험을 쌓음',
+    ],
+  },
 ];
 
 // route.js 를 통해 api 형식 구현하기

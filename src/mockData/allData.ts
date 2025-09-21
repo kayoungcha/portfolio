@@ -78,6 +78,7 @@ export const frontEndSkill = [
   'Chart.js',
   'Recharts',
   'React quill',
+  'Vercel',
 ];
 
 export const workToolsSkill = [
