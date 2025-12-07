@@ -13,18 +13,15 @@ type Props = {
 };
 
 export default function MainIconChip(props: Props) {
-  // 아이콘 ref
   const chipRef = useRef<HTMLDivElement | null>(null);
   const width = useWindowWidthStore((state) => state.width);
 
-  // 마우스 이벤트
   useEffect(() => {
     let targetX = 0,
       targetY = 0;
     let currentX = 0,
       currentY = 0;
 
-    // 마우스 움직임에 따라
     function handleMouseMove(e: MouseEvent) {
       const rect = chipRef.current!.getBoundingClientRect();
       const iconX = rect.left + rect.width / 2;
@@ -39,7 +36,6 @@ export default function MainIconChip(props: Props) {
       targetY = -dy * strength * 0.5;
     }
 
-    //아이콘 중간값에서 가까울때 애니메이션
     function animate() {
       currentX += (targetX - currentX) * 0.1;
       currentY += (targetY - currentY) * 0.1;

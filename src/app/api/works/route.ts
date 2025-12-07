@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 
 export interface ProjectData {
   id: string; // 고유 ID
-  type: 'app' | 'web' | 'publishing' | 'personalWork';
+  type: 'app' | 'web' | 'publishing' | 'personalWork'; // 프로젝트 타입
   title: string; // 프로젝트명
-  img: string;
-  url?: string;
-  liveUrl?: string;
+  img: string; // 프로젝트 메인 이미지
+  url?: string; // 카피페이지 url
+  liveUrl?: string; // 라이브 url
   description: string; // 한 줄 설명
   duration: string; // 개발 기간
   platforms: string[]; // 배포 플랫폼 (예: ["Android", "iOS", "Web"])
@@ -59,20 +59,23 @@ export const ProjectDatas: ProjectData[] = [
       'SCSS Modules',
       'Storybook',
       'React Quill',
+      'Framer Motion',
       'Figma',
     ],
     challenges: [
       {
         key: '데스크톱 앱 마이그레이션',
-        value: 'C++ 기반 MVP 프론트 → React Electron으로 3주 만에 마이그레이션',
+        value: 'C++ 기반 MVP 프론트를 React Electron으로 3주 만에 마이그레이션',
       },
       {
         key: 'CRA 기반 Electron의 버전 충돌 문제',
-        value: 'SEO 적용보단 속도감 개선을 목표로 Vite Electron으로 전환 ',
+        value:
+          'CRA번들과 Electron의 버전 충돌이 있어 중간에 기초 프레임워크를 바꿔야하는 상황이 발생 각 프레임워크를 비교 후 데스크톱 앱 목적엔 SEO 적용보단 개발 및 빌드 속도감 개선을 우선시 해 Vite Electron으로 전환 ',
       },
       {
         key: '데스크톱 앱에서 웹사이트로 기획 변경',
-        value: '데스크톱 앱과 웹 동시 대응을 위한 구조 재설계',
+        value:
+          'Vite Electron을 Vite/React로 사용할 수 있도록 개선해 데스크톱 앱과 웹 동시 대응을 위한 구조 재설계',
       },
       {
         key: 'Virtual Scroll의 동적 높이 적용의 한계',
@@ -82,20 +85,81 @@ export const ProjectDatas: ProjectData[] = [
       {
         key: '실시간 랭킹의 지연시간',
         value:
-          '실시간 랭킹 효과 증대를 위해 React Query로 캐시 조절 및 로딩과 애니메이션 효과를 적용하여 좀더 매끄러운 효과를 적용함',
+          '실시간 랭킹 효과 증대를 위해 React Query로 캐시 조절 및 로딩과 애니메이션 효과를 적용하여 진입 시 더 매끄러운 효과를 적용함',
       },
     ],
     achievements: [
-      '6년간 기획만 진행되던 프로젝트를 웹 전환 후 6개월 만에 프론트엔드 80% 개발 완료',
-      'Electron 기반 데스크톱 앱과 Vite 웹사이트를 동시에 충족하는 구조 설계',
-      'React Query + IndexedDB 캐싱으로 성능 최적화 및 트래픽 절감',
+      'Electron/React 기반 데스크톱 앱과 Vite/React 웹사이트를 동시에 충족하는 구조 설계',
+      '수정이 많지 않은 반복 데이터 (ex. 유저 정보) React Query + IndexedDB 캐싱으로 성능 최적화 및 트래픽 절감',
       'Atomic Design Pattern + Storybook 도입 시도로  컴포넌트 재사용성과 협업 효율성 강화',
+      'Framer Motion 기반의 애니메이션을 도입하여 랭킹 전환과 UI 반응성을 향상',
+    ],
+  },
+  {
+    id: 'super-phonics',
+    type: 'web',
+    title: 'SuperPhonics 3rd',
+    img: '/assets/worksImages/img_super_phonics.jpg',
+    url: '',
+    liveUrl: 'https://www.twoponds.co.kr/superphonics3rdED',
+    platforms: ['Android', 'iOS', 'WEB'],
+    description: '어린이 영어 학습 교재 앱',
+    duration: '2025.10 ~ 2025.11',
+    role: `1권 프론트엔드 + JSON 데이터 유지 보수 및 전체 수정 \n 2-5권 퍼블리싱 + 프론트엔드 + JSON 데이터 설계 및 구축`,
+    skill: ['Ionic', 'React', 'Vite', 'TypeScript', 'Zustand', 'Capacitor'],
+    keyFeatures: [
+      {
+        key: '오디오 학습 기능',
+        value: '단어 이미지와 오디오를 연결해 학습 화면을 구현',
+      },
+      {
+        key: '비디오 학습 기능',
+        value: '단어 퀴즈 활용한 비디오 학습 기능 구현',
+      },
+      {
+        key: '다양한 게임 컨텐츠 구현',
+        value: `각 권의 유닛마다 대표 라임과 단어들로 각종 7-8개 종류의 게임 구현\n(ex. 카드 플립 / 단어 만들기)`,
+      },
+    ],
+    design: ['Tailwind CSS', 'Frame Motion', 'Figma'],
+    challenges: [
+      {
+        key: '대용량 리소스 문제',
+        value: `이미지·영상·음원 등 대용량 로컬 리소스로 로딩 지연 발생 → ffmpeg/Squoosh로 webp·m4a 변환 및 해상도 최적화.  
+Next.js Image 기능을 모방한 이미지 스케일링 컴포넌트를 구현해 레이아웃 시프트 제거 및 렌더링 안정화.`,
+      },
+      {
+        key: '오디오 겹침 문제',
+        value: `1권 유지보수 시 페이지마다 새 오디오를 생성해 겹침·중복 재생 오류 발생 →  
+Zustand로 BGM/Voice/Effect 3채널 오디오 스토어를 구축해 일관된 제어 체계 확립.`,
+      },
+      {
+        key: 'Ionic Outlet Router 스택 문제',
+        value: `pop(back) 애니메이션 미지원으로 push만 누적되어 스택 과도 증가 → 
+라우터 방향은 forward 유지, 동작은 pop으로 처리하고 각 유닛 분기마다 replace로 스택 초기화해 전환 속도 개선.`,
+      },
+      {
+        key: '가로 고정형 앱의 반응형 문제',
+        value: `앱은 가로 고정, 웹은 다양한 해상도 대응 필요 →  
+4:3 디자인 비율 기준으로 기기 상황에 따라 vw 또는 vh를 선택하는 이중 레이아웃 구조를 구현.`,
+      },
+      {
+        key: '1권 유지보수와 권수별 구조 차이',
+        value: `1권과 2~5권 기획·로직 구조가 상이해 재사용 어려움 →  
+학습 모듈을 컴포넌트 기반으로 재설계하고 JSON·이미지 데이터 구조를 표준화해 전체 권수에서 재사용 가능하게 통합.`,
+      },
+    ],
+    achievements: [
+      '가로 고정형 앱 + 웹을 동시에 대응하는 반응형 레이아웃 시스템 구현',
+      'CSS will-change 등 최적화를 통해 학습 애니메이션의 프레임 드랍 최소화',
+      '모든 학습 모듈을 컴포넌트 단위로 통합하여 개발 효율 및 유지보수성 향상',
+      '대용량 리소스(webp·m4a) 최적화로 초기 로딩 속도 및 앱 용량 개선',
     ],
   },
   {
     id: 'anidar-customer',
     type: 'app',
-    title: 'ANIDAR 고객앱',
+    title: 'ANIDAR 고객 앱',
     img: '/assets/worksImages/img_anidar.png',
     url: 'https://anidar-test.firebaseapp.com/login',
     platforms: ['Android', 'iOS'],
@@ -180,7 +244,7 @@ export const ProjectDatas: ProjectData[] = [
   {
     id: 'anidar-butler',
     type: 'app',
-    title: 'ANIDAR 버틀러앱',
+    title: 'ANIDAR 버틀러 앱',
     img: '/assets/worksImages/img_anidarforbtuler.png',
     url: 'https://anidar-staff.firebaseapp.com/login',
     platforms: ['Android', 'iOS'],
@@ -194,7 +258,7 @@ export const ProjectDatas: ProjectData[] = [
       { key: '채팅', value: '고객앱과 1대1 혹은 다대1 채팅 기능' },
       {
         key: '각 로그인 유형별 개별 기능',
-        value: `버틀러: 회원 스케줄·일정 확인, 회원 채팅, 예약 확인 및 현장 포인트 차감, 휴무일 관리' '바디 테라피스트: 예약 일정 확인, 예약 완료 처리, 현장 QR 차감' '신생아실 간호사: 회원별 신생아 관찰지 입력' '주차 직원: 발렛 완료 및 상태 확인' '카페·델리 직원: 주문 접수 및 결제 처리 (키오스크 형태)' '쉐프·배달 서버: 조리·배달 상태 확인 및 완료 처리`,
+        value: `버틀러: 회원 스케줄·일정 확인, 회원 채팅, 예약 확인 및 현장 포인트 차감, 휴무일 관리\n바디 테라피스트: 예약 일정 확인, 예약 완료 처리, 현장 QR 차감\n신생아실 간호사: 회원별 신생아 관찰지 입력\n주차 직원: 발렛 완료 및 상태 확인\n카페·델리 직원: 주문 접수 및 결제 처리 (키오스크 형태)\n쉐프·배달 서버: 조리·배달 상태 확인 및 완료 처리`,
       },
     ],
     design: ['Sketch'],

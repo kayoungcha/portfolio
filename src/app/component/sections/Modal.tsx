@@ -17,7 +17,7 @@ export default function Modal({ isOpen, onClose, children }: Props) {
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden'; // 스크롤 락
+      document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }

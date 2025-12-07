@@ -84,7 +84,7 @@ export default function Works() {
       addCount++;
 
       if (colCount >= setCount) {
-        break; // 한 줄이 꽉 찼으면 멈춤
+        break;
       }
     }
 
@@ -112,7 +112,7 @@ export default function Works() {
         작업물은 중요도 순으로 정리되어 있습니다.
       </p>
 
-      {/* NOTE 작업물 네비 */}
+      {/*  작업물 네비 */}
       <WorksNav
         updateWork={activeWorksNav}
         styles={`mb-[16px] ${show ? 'animate-fade_up_ani duration-550' : ''}`}
@@ -131,7 +131,7 @@ export default function Works() {
           })}
       </p>
 
-      {/* NOTE 카드 뷰 */}
+      {/*  카드 뷰 */}
       <div
         className={`works_area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
           w-full h-full sm:gap-x-[24px] gap-y-[45px] mb-[40px] px-[1rem]

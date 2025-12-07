@@ -19,7 +19,6 @@ export default function WorkCard({ item, index, work }: Props) {
   const [show, setShow] = useState(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  // 섹션 observer
   useEffect(() => {
     const el = cardRef.current;
     if (!el) return;
@@ -73,7 +72,7 @@ export default function WorkCard({ item, index, work }: Props) {
         <div
           className="mask_area w-full h-full"
           style={{
-            clipPath: 'inset(2px round 24px)', // 👈 border-radius 24px과 동일하게
+            clipPath: 'inset(2px round 24px)', // border-radius 24px과 동일하게
           }}
         >
           <Image

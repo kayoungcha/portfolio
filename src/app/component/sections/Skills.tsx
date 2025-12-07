@@ -27,10 +27,10 @@ export default function Skills() {
             setShow(true);
             frontChipRefs.current.forEach((chip) => {
               if (chip) {
-                const randomDelay = Math.random() * 500; // 0 ~ 800ms
-                const randomX = (Math.random() - 0.5) * 500; // -20px ~ +20px
-                const randomDeg = (Math.random() - 0.5) * 180; // -20px ~ +20px
-                const randomDuration = 600 + Math.random() * 600; // 0.4s ~ 1s
+                const randomDelay = Math.random() * 500;
+                const randomX = (Math.random() - 0.5) * 500;
+                const randomDeg = (Math.random() - 0.5) * 180;
+                const randomDuration = 600 + Math.random() * 600;
 
                 chip.style.setProperty('--x-offset', `${randomX}px`);
                 chip.style.setProperty('--rotate', `${randomDeg}deg`);
@@ -42,10 +42,10 @@ export default function Skills() {
             });
             toolChipRefs.current.forEach((chip) => {
               if (chip) {
-                const randomDelay = Math.random() * 700; // 0 ~ 800ms
-                const randomX = (Math.random() - 0.5) * 700; // -20px ~ +20px
-                const randomDuration = 500 + Math.random() * 600; // 0.4s ~ 1s
-                const randomDeg = -(Math.random() - 0.5) * 180; // -20px ~ +20px
+                const randomDelay = Math.random() * 700;
+                const randomX = (Math.random() - 0.5) * 700;
+                const randomDuration = 500 + Math.random() * 600;
+                const randomDeg = -(Math.random() - 0.5) * 180;
 
                 chip.style.setProperty('--x-offset', `${randomX}px`);
                 chip.style.setProperty('--rotate', `${randomDeg}deg`);

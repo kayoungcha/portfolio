@@ -12,11 +12,18 @@ export default function Footer() {
   const [show, setShow] = useState<boolean>(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [showIcon, setShowIcon] = useState<string>('');
-  const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+  const [isMobile, setIsMobile] = useState(false);
 
   const setActiveSection = useActiveSectionStore(
     (state) => state.setActiveSection
   );
+
+  useEffect(() => {
+    if (typeof navigator !== 'undefined') {
+      const mobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+      setIsMobile(mobile);
+    }
+  }, []);
 
   useEffect(() => {
     const el = contactSectionRef.current;
@@ -38,7 +45,6 @@ export default function Footer() {
     return () => observer.unobserve(el);
   }, [setActiveSection]);
 
-  // 리스트 분기 핸들
   const listHandle = (i: number, e: React.MouseEvent) => {
     if (i === 0) {
       handleCopy(e, 'rkdud9941@gmail.com');
@@ -55,15 +61,12 @@ export default function Footer() {
     }
   };
 
-  // copy event
   const handleCopy = (e: React.MouseEvent, copyString: string) => {
     navigator.clipboard.writeText(copyString).then(() => {
       setShowIcon(copyString);
       setTimeout(() => setShowIcon(''), 500);
     });
   };
-
-  //window open event
 
   const handleWindowOpen = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');

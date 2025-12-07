@@ -43,7 +43,6 @@ export default function Header() {
     let ticking = false;
     function update() {
       const currentScrollY = window.scrollY;
-
       // 내비게이션 중이면 스킵
       if (isNavigating.current) {
         ticking = false;
@@ -51,10 +50,8 @@ export default function Header() {
       }
 
       if (currentScrollY > lastScrollY && currentScrollY > 54) {
-        // 스크롤 내릴 때 (54 이상 내려간 경우만 헤더 숨김)
         setHidden(true);
       } else {
-        // 스크롤 올리거나 멈췄을 때 → 헤더 보임
         setHidden(false);
       }
 
@@ -79,10 +76,10 @@ export default function Header() {
   // 네비게이션 클릭시 header 이벤트 막기
   function handleNavClick() {
     isNavigating.current = true;
-    setHidden(false); // 무조건 보이게
+    setHidden(false);
     setTimeout(() => {
       isNavigating.current = false;
-    }, 1500); // 스크롤 애니메이션 끝날 시간만큼
+    }, 1500);
   }
 
   return (

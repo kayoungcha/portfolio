@@ -18,7 +18,6 @@ export default function ModalContentApp({ item }: Props) {
       className={`content_area h-full w-full flex flex-col sm:grid
         sm:grid-cols-2 gap-x-[20px] overflow-auto sm:overflow-hidden`}
     >
-      {/* iframe */}
       {item.url && (
         <div
           className={`iframe_wrap max-w-[320px] max-h-[700px] w-full h-full
